@@ -94,11 +94,6 @@ header p {
   text-decoration: none;
 }
 
-.sidebar ul li a.link-ativo {
-  background-color: var(--cor-principal);
-  border-left: 4px solid #ffffff;
-}
-
 main {
   flex: 1;
   max-width: 960px;
@@ -119,16 +114,18 @@ h2 {
 
 .lista-vereadores {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
   gap: 20px;
+  align-items: stretch;
 }
 
 .foto-perfil {
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  margin-bottom: 15px;
+  margin-bottom: 12px;
   border: 3px solid var(--cor-principal);
+  object-fit: cover;
 }
 
 .card-vereador {
@@ -136,13 +133,27 @@ h2 {
   text-align: center;
   border: 1px solid var(--cinza-borda);
   border-radius: 5px;
-  padding: 15px;
+  padding: 18px 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   transition: box-shadow 0.3s, border-color 0.3s;
 }
 
 .card-vereador h3 {
   color: var(--cor-principal);
-  margin-bottom: 5px;
+  font-size: 1.05rem;
+  min-height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 6px;
+}
+
+.cargo-vereador {
+  font-size: 0.9rem;
+  min-height: 2.4rem;
+  margin-bottom: 12px;
 }
 
 .lista-noticias {
@@ -267,6 +278,11 @@ footer {
   font-size: 0.9rem;
 }
 
+.sidebar ul li a.link-ativo {
+  background-color: var(--cor-principal);
+  border-left: 4px solid #ffffff;
+}
+
 body.tema-escuro {
   background-color: #1e1e1e;
   color: #f0f0f0;
@@ -286,183 +302,19 @@ body.tema-escuro textarea,
 body.tema-escuro select {
   background-color: #2d2d2d;
   color: #ffffff;
-  border-color: #666666;
 }
-
-.config-container {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-}
-
-.btn-config {
-  width: auto;
-  padding: 8px 14px;
-  font-size: 0.9rem;
-  background-color: var(--cor-escura);
-  border: 1px solid #ffffff;
-  border-radius: 5px;
-}
-
-.painel-config {
-  position: absolute;
-  top: 45px;
-  right: 0;
-  width: 220px;
-  background-color: #ffffff;
-  color: #222222;
-  border: 1px solid var(--cinza-borda);
-  border-radius: 5px;
-  padding: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  z-index: 200;
-  text-align: left;
-}
-
-body.tema-escuro .painel-config {
-  background-color: #2d2d2d;
-  color: #f0f0f0;
-  border-color: #555555;
-}
-
-.item-config {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-  font-size: 0.9rem;
-  font-weight: bold;
-}
-
-.item-config:last-child {
-  margin-bottom: 0;
-}
-
-.controles-fonte {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.btn-acao {
-  width: auto;
-  padding: 5px 10px;
-  font-size: 0.85rem;
-  background-color: var(--cor-principal);
-}
-
-.barra-filtros {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 15px;
-  flex-wrap: wrap;
-}
-
-.barra-filtros input,
-.barra-filtros select {
-  flex: 1;
-  min-width: 180px;
-}
-
-.card-vereador.favorito {
-  border: 2px solid var(--cor-principal);
-  box-shadow: 0 0 10px rgba(139, 105, 20, 0.4);
-}
-
-.btn-card {
-  margin-top: 10px;
-  padding: 8px 12px;
-  font-size: 0.85rem;
-}
-
-.noticia-lida {
-  opacity: 0.65;
-}
-
-.painel-detalhes {
-  background-color: var(--cinza-claro);
-  border-left: 4px solid var(--cor-principal);
-  padding: 12px;
-  margin-top: 15px;
-  border-radius: 4px;
-}
-
-body.tema-escuro .painel-detalhes {
-  background-color: #2d2d2d;
-}
-
-.oculto {
+.config-container{
   display: none;
 }
-
-.mensagem-feedback {
-  margin-top: 12px;
-  font-weight: bold;
-  color: var(--cor-principal);
+.btn-config:focus ~ .config-container{
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-direction: row;
 }
-
-@media (max-width: 768px) {
-  header h1 {
-    font-size: 1.3rem;
-  }
-
-  .config-container {
-    position: static;
-    margin-top: 12px;
-    display: inline-block;
-  }
-
-  .painel-config {
-    right: 50%;
-    transform: translateX(50%);
-  }
-
-  .lista-vereadores {
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  }
-}
-
-@media (max-width: 600px) {
-  .pagina-container {
-    flex-direction: column;
-  }
-
-  .sidebar {
-    width: 100%;
-    min-height: auto;
-    position: static;
-    padding: 10px 0;
-  }
-
-  .sidebar ul {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 5px;
-  }
-
-  .sidebar ul li a {
-    padding: 8px 12px;
-  }
-
-  .cabecalho-container {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  h2 {
-    font-size: 1.2rem;
-  }
-
-  .lista-vereadores {
-    grid-template-columns: 1fr;
-  }
-
-  table {
-    font-size: 0.85rem;
-  }
-
-  th, td {
-    padding: 8px 6px;
-  }
+.config-container:hover{
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-direction: row;
 }

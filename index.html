@@ -19,8 +19,8 @@
         <p id="subtitulo-camara">Trabalhando junto com a população por uma cidade melhor</p>
       </div>
     </div>
+    <button type="button" id="btn-config" class="btn-config">Configurações</button>
     <div class="config-container">
-      <button type="button" id="btn-config" class="btn-config">Configurações</button>
       <div id="painel-config" class="painel-config oculto">
         <div class="item-config">
           <span>Tema:</span>
@@ -68,32 +68,47 @@
 
       <section id="vereadores">
         <h2>Vereadores</h2>
-        <div class="lista-vereadores">
-          <article class="card-vereador">
+        <div class="barra-filtros">
+          <input type="text" id="busca-vereador" placeholder="Buscar vereador pelo nome...">
+          <select id="filtro-partido">
+            <option value="todos">Todos os partidos</option>
+            <option value="SI">Partido SI</option>
+            <option value="TI">Partido TI</option>
+            <option value="HTML">Partido HTML</option>
+            <option value="CSS">Partido CSS</option>
+          </select>
+        </div>
+        <div class="lista-vereadores" id="container-vereadores">
+          <article class="card-vereador" data-nome="Luan Cristian" data-partido="SI">
             <img src="vereadorLuan.jpeg" alt="Foto do vereador Luan Cristian" class="foto-perfil">
             <h3>Luan Cristian</h3>
             <p><strong>Partido:</strong> SI</p>
-            <p>Presidente da Câmara</p>
+            <p class="cargo-vereador">Presidente da Câmara</p>
+            <button type="button" class="btn-card btn-detalhes">Ver detalhes</button>
           </article>
-          <article class="card-vereador">
+          <article class="card-vereador" data-nome="Gustavo Antonio" data-partido="TI">
             <img src="vereadorGustavo.jpeg" alt="Foto do vereador Gustavo" class="foto-perfil">
             <h3>Gustavo Antonio</h3>
             <p><strong>Partido:</strong> TI</p>
-            <p>Vice-presidente</p>
+            <p class="cargo-vereador">Vice-presidente</p>
+            <button type="button" class="btn-card btn-detalhes">Ver detalhes</button>
           </article>
-          <article class="card-vereador">
+          <article class="card-vereador" data-nome="Rian Leal" data-partido="HTML">
             <img src="vereadorRian.jpeg" alt="Foto do vereador Rian" class="foto-perfil">
             <h3>Rian Leal</h3>
             <p><strong>Partido:</strong> HTML</p>
-            <p>1º Secretário</p>
+            <p class="cargo-vereador">1º Secretário</p>
+            <button type="button" class="btn-card btn-detalhes">Ver detalhes</button>
           </article>
-          <article class="card-vereador">
+          <article class="card-vereador" data-nome="Nilson Bruno" data-partido="CSS">
             <img src="vereadorNilson.jpeg" alt="Foto do vereador Nilson Bruno" class="foto-perfil">
             <h3>Nilson Bruno</h3>
             <p><strong>Partido:</strong> CSS</p>
-            <p>2º Secretário</p>
+            <p class="cargo-vereador">2º Secretário</p>
+            <button type="button" class="btn-card btn-detalhes">Ver detalhes</button>
           </article>
         </div>
+        <div id="painel-vereador" class="painel-detalhes oculto"></div>
       </section>
 
       <section id="noticias">
