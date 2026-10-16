@@ -288,3 +288,139 @@ if (containerVereadores) {
     renderizarDetalhesVereador(dados);
   });
 }
+
+const campoBuscaNoticia = document.querySelector("#busca-noticia");
+const listaNoticias = document.querySelector(".lista-noticias");
+const contadorNoticias = document.querySelector("#contador-noticias");
+const seletorSessao = document.querySelector("#filtro-sessao");
+const linhasSessoes = document.querySelectorAll("#sessoes tbody tr");
+const menuSidebar = document.querySelector(".sidebar");
+const secoesPagina = document.querySelectorAll("main section");
+
+const salvarSessao = function (chave, valor) {
+  sessionStorage.setItem(chave, String(valor));
+};
+
+const obterSessao = (chave, padrao = "") => {
+  const valor = sessionStorage.getItem(chave);
+  return valor ?? padrao;
+};
+
+function mostrarSecao(idSecao) {
+  salvarSessao("secaoAtiva", idSecao);
+
+  for (const secao of secoesPagina) {
+    if (idSecao === "todas" || secao.id === idSecao) {
+      secao.classList.remove("oculto");
+    } else {
+      secao.classList.add("oculto");
+    }
+  }
+
+  if (menuSidebar) {
+    const links = menuSidebar.querySelectorAll("a");
+    for (const link of links) {
+      if (link.getAttribute("href") === `#${idSecao}`) {
+        link.classList.add("link-ativo");
+      } else {
+        link.classList.remove("link-ativo");
+      }
+    }
+  }
+}
+
+function inicializarSessao() {
+  const secaoSalva = obterSessao("secaoAtiva", "todas");
+  salvarSessao("secaoAtiva", secaoSalva);
+  salvarSessao("termoBuscaNoticia", obterSessao("termoBuscaNoticia", ""));
+  salvarSessao("filtroTipoSessao", obterSessao("filtroTipoSessao", "todas"));
+  salvarSessao("noticiasMarcadas", obterSessao("noticiasMarcadas", "0"));
+  salvarSessao("cliquesSessao", obterSessao("cliquesSessao", "0"));
+
+  mostrarSecao(secaoSalva);
+
+  if (campoBuscaNoticia) {
+    campoBuscaNoticia.value = obterSessao("termoBuscaNoticia", "");
+    filtrarNoticias();
+  }
+
+  if (seletorSessao) {
+    seletorSessao.value = obterSessao("filtroTipoSessao", "todas");
+    filtrarTabelaSessoes();
+  }
+}
+
+function filtrarNoticias() {
+  if (!listaNoticias) return;
+  const termo = campoBuscaNoticia ? campoBuscaNoticia.value.toLowerCase().trim() : "";
+  salvarSessao("termoBuscaNoticia", termo);
+
+  const itens = listaNoticias.querySelectorAll("li");
+  let visiveis = 0;
+
+  for (const item of itens) {
+    const texto = item.textContent.toLowerCase();
+    if (texto.indexOf(termo) === -1) {
+      item.classList.add("oculto");
+      continue;
+    }
+    item.classList.remove("oculto");
+    visiveis++;
+  }
+
+  if (contadorNoticias) {
+    contadorNoticias.textContent = `Exibindo ${visiveis} de ${itens.length} notícias publicadas.`;
+  }
+}
+
+function filtrarTabelaSessoes() {
+  const tipoSelecionado = seletorSessao ? seletorSessao.value : "todas";
+  salvarSessao("filtroTipoSessao", tipoSelecionado);
+
+  for (const linha of linhasSessoes) {
+    const celulas = linha.querySelectorAll("td");
+    if (celulas.length < 2) continue;
+    const tipoLinha = celulas[1].textContent.trim();
+
+    if (tipoSelecionado === "todas" || tipoLinha === tipoSelecionado) {
+      linha.classList.remove("oculto");
+    } else {
+      linha.classList.add("oculto");
+    }
+  }
+}
+
+if (campoBuscaNoticia) {
+  campoBuscaNoticia.addEventListener("keyup", filtrarNoticias);
+}
+
+if (seletorSessao) {
+  seletorSessao.addEventListener("change", filtrarTabelaSessoes);
+}
+
+if (listaNoticias) {
+  listaNoticias.addEventListener("click", (event) => {
+    const itemNoticia = event.target.closest("li");
+    if (!itemNoticia) return;
+
+    itemNoticia.classList.toggle("noticia-lida");
+    const lidas = listaNoticias.querySelectorAll(".noticia-lida").length;
+    salvarSessao("noticiasMarcadas", lidas);
+  });
+}
+
+if (menuSidebar) {
+  menuSidebar.addEventListener("click", (event) => {
+    const linkClicado = event.target.closest("a");
+    if (!linkClicado) return;
+
+    event.preventDefault();
+    const idDestino = linkClicado.getAttribute("href").replace("#", "");
+    mostrarSecao(idDestino);
+
+    const cliques = Number(obterSessao("cliquesSessao", "0")) + 1;
+    salvarSessao("cliquesSessao", cliques);
+  });
+}
+
+document.addEventListener("DOMContentLoaded", inicializarSessao);

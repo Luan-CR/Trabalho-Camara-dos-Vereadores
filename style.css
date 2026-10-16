@@ -72,6 +72,17 @@ header p {
   padding: 20px 0;
 }
 
+.titulo-sidebar {
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 0 20px 10px 20px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+}
+
 .sidebar ul {
   list-style: none;
   display: flex;
@@ -110,6 +121,41 @@ h2 {
   margin-bottom: 15px;
   border-bottom: 2px solid var(--cor-principal);
   padding-bottom: 5px;
+}
+
+.descricao-secao {
+  margin-bottom: 18px;
+}
+
+.grade-informativa {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.bloco-info {
+  background-color: var(--cinza-claro);
+  border: 1px solid var(--cinza-borda);
+  border-top: 4px solid var(--cor-principal);
+  border-radius: 5px;
+  padding: 16px;
+}
+
+.bloco-info h3 {
+  color: var(--cor-principal);
+  font-size: 1.05rem;
+  margin-bottom: 8px;
+}
+
+.bloco-info p {
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+}
+
+.bloco-espacado {
+  margin-top: 25px;
 }
 
 .lista-vereadores {
@@ -206,13 +252,20 @@ tbody tr:nth-child(even) {
 
 .info-contato {
   background-color: var(--cinza-claro);
-  padding: 15px;
+  padding: 16px;
   border-radius: 5px;
   margin-bottom: 20px;
+  border: 1px solid var(--cinza-borda);
+}
+
+.info-contato h3 {
+  color: var(--cor-principal);
+  font-size: 1.05rem;
+  margin-bottom: 10px;
 }
 
 .info-contato p {
-  margin-bottom: 5px;
+  margin-bottom: 6px;
 }
 
 fieldset {
@@ -291,6 +344,7 @@ body.tema-escuro {
 body.tema-escuro .card-vereador,
 body.tema-escuro .lista-noticias li,
 body.tema-escuro .info-contato,
+body.tema-escuro .bloco-info,
 body.tema-escuro tbody tr:nth-child(even) {
   background-color: #2d2d2d;
   color: #f0f0f0;
@@ -478,6 +532,11 @@ body.tema-escuro .painel-detalhes {
     min-height: auto;
     position: static;
     padding: 10px 0;
+  }
+
+  .titulo-sidebar {
+    text-align: center;
+    padding-bottom: 6px;
   }
 
   .sidebar ul {

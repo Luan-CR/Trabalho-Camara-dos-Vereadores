@@ -41,7 +41,9 @@
   <div class="pagina-container">
 
     <nav class="sidebar" aria-label="Menu principal">
+      <p class="titulo-sidebar">Seções</p>
       <ul>
+        <li><a href="#todas">Geral</a></li>
         <li><a href="#sobre">Sobre</a></li>
         <li><a href="#vereadores">Vereadores</a></li>
         <li><a href="#noticias">Notícias</a></li>
@@ -56,18 +58,41 @@
     <section id="sobre">
       <h2>Sobre a Câmara</h2>
       <p>
-        A Câmara Municipal de Buriti do Codô é o espaço onde os representantes da população discutem e acompanham 
-        questões importantes para o município. Por meio das sessões e dos projetos de lei, os vereadores participam 
-        das decisões que fazem parte do dia a dia da cidade.
+        A Câmara Municipal de Buriti do Codô é o órgão do Poder Legislativo local, onde os representantes eleitos pela população discutem, votam e fiscalizam questões essenciais para o desenvolvimento do município. Por meio das sessões plenárias, audiências públicas e projetos de lei, os vereadores participam diretamente das decisões que impactam o dia a dia da cidade.
       </p>
       <p>
-        Nesta página, você pode conhecer os vereadores, acompanhar as principais notícias e sessões da Câmara e também 
-        entrar em contato para enviar dúvidas, sugestões ou outras manifestações.
+        Comprometida com a transparência pública e a participação cidadã, a Casa Legislativa disponibiliza neste portal informações atualizadas sobre seus parlamentares, pautas de votações, notícias institucionais e canais diretos de atendimento ao cidadão.
       </p>
+
+      <div class="grade-informativa">
+        <div class="bloco-info">
+          <h3>Função Legislativa</h3>
+          <p>Elaboração, análise e votação de projetos de lei, emendas à Lei Orgânica, decretos legislativos e resoluções que regulamentam a vida no município.</p>
+        </div>
+        <div class="bloco-info">
+          <h3>Função Fiscalizadora</h3>
+          <p>Acompanhamento rigoroso da aplicação dos recursos públicos, execução do orçamento municipal e fiscalização das obras e serviços prestados pela Prefeitura.</p>
+        </div>
+        <div class="bloco-info">
+          <h3>Participação Popular</h3>
+          <p>Abertura permanente ao diálogo com a sociedade por meio de audiências públicas, Tribuna Livre e atendimento direto nos gabinetes parlamentares.</p>
+        </div>
+      </div>
+
+      <div class="info-contato">
+        <h3>Comissões Permanentes em Atividade (Biênio 2025–2026)</h3>
+        <p><strong>Comissão de Constituição, Justiça e Transformação Digital:</strong> Avalia a legalidade dos projetos e promove a modernização dos serviços públicos.</p>
+        <p><strong>Comissão de Finanças, Orçamento e Fiscalização:</strong> Analisa a Lei de Diretrizes Orçamentárias (LDO), a Lei Orçamentária Anual (LOA) e a prestação de contas.</p>
+        <p><strong>Comissão de Educação, Saúde e Assistência Social:</strong> Acompanha as políticas públicas voltadas ao ensino municipal, postos de saúde e programas sociais.</p>
+        <p><strong>Comissão de Urbanismo, Meio Ambiente e Infraestrutura:</strong> Fiscaliza obras públicas, mobilidade urbana, iluminação e preservação ambiental.</p>
+      </div>
     </section>
 
     <section id="vereadores">
       <h2>Vereadores</h2>
+      <p class="descricao-secao">
+        Conheça os parlamentares que compõem a atual legislatura (2025–2028) da Câmara Municipal de Buriti do Codô. Utilize a busca abaixo para filtrar por nome ou partido e clique em <strong>Ver detalhes</strong> para consultar a biografia, comissões, gabinete e projetos de lei de cada vereador.
+      </p>
       <div class="barra-filtros">
         <input type="text" id="busca-vereador" placeholder="Buscar vereador pelo nome...">
         <select id="filtro-partido">
@@ -109,72 +134,144 @@
         </article>
       </div>
       <div id="painel-vereador" class="painel-detalhes oculto"></div>
+
+      <div class="info-contato bloco-espacado">
+        <h3>O Papel da Mesa Diretora</h3>
+        <p>A Mesa Diretora é responsável pela direção dos trabalhos legislativos e pelos serviços administrativos da Câmara. Composta pelo Presidente, Vice-Presidente, 1º Secretário e 2º Secretário, ela coordena a pauta das sessões plenárias, promulga resoluções e assegura o regular funcionamento da Casa.</p>
+      </div>
     </section>
 
     <section id="noticias">
       <h2>Notícias</h2>
+      <p class="descricao-secao">
+        Acompanhe as ações, votações, visitas técnicas e audiências públicas realizadas pela Câmara Municipal. Você pode pesquisar por palavras-chave e clicar sobre uma notícia para marcá-la como lida durante a sua navegação.
+      </p>
+      <div class="barra-filtros">
+        <input type="text" id="busca-noticia" placeholder="Pesquisar nas notícias por palavra-chave...">
+      </div>
+      <p id="contador-noticias"></p>
       <ul class="lista-noticias">
         <li>
           <h3>Câmara aprova projeto de revitalização da praça central</h3>
           <p>
             Os vereadores aprovaram por unanimidade o projeto que prevê a reforma
-            completa da Praça da República, incluindo nova iluminação, bancos e
-            área de lazer para crianças.
+            completa da Praça da República, incluindo nova iluminação em LED, bancos padronizados,
+            pista de caminhada acessível e área de lazer segura para crianças. As obras têm início previsto para o próximo mês.
           </p>
-          <p class="data-noticia"><time datetime="2026-09-15">15/09/2026</time></p>
+          <p class="data-noticia"><time datetime="2026-09-15">15/09/2026</time> — Infraestrutura e Urbanismo</p>
         </li>
         <li>
           <h3>Audiência pública sobre transporte coletivo é marcada para outubro</h3>
           <p>
             A comissão de mobilidade urbana convocou audiência pública para
-            debater a reestruturação das linhas de ônibus do município. O evento
-            será aberto à população.
+            debater a reestruturação das linhas de ônibus do município, ampliação de horários nos bairros mais afastados e integração tarifária. O evento será aberto à participação de moradores e estudantes.
           </p>
-          <p class="data-noticia"><time datetime="2026-09-10">10/09/2026</time></p>
+          <p class="data-noticia"><time datetime="2026-09-10">10/09/2026</time> — Mobilidade Urbana</p>
         </li>
         <li>
           <h3>Vereadores acompanham de perto as obras do novo posto de saúde</h3>
           <p>
-            Membros da comissão de saúde realizaram visita técnica às obras do
-            posto de saúde do bairro Jardim das Flores, previsto para inauguração
-            em novembro.
+            Membros da comissão de saúde realizaram visita técnica às obras da Unidade Básica de Saúde
+            do bairro Jardim das Flores, prevista para inauguração em novembro, verificando o andamento das instalações elétricas e salas de atendimento odontológico.
           </p>
-          <p class="data-noticia"><time datetime="2026-09-05">05/09/2026</time></p>
+          <p class="data-noticia"><time datetime="2026-09-05">05/09/2026</time> — Saúde Pública</p>
+        </li>
+        <li>
+          <h3>Aprovado programa de inclusão digital e robótica nas escolas municipais</h3>
+          <p>
+            Em votação plenária, o Legislativo aprovou o projeto que destina recursos para a modernização dos laboratórios de informática da rede municipal de ensino, garantindo novos computadores, acesso à internet de alta velocidade e oficinas de programação no contraturno escolar.
+          </p>
+          <p class="data-noticia"><time datetime="2026-08-29">29/08/2026</time> — Educação e Tecnologia</p>
+        </li>
+        <li>
+          <h3>Câmara lança sistema digital de consulta a atas e projetos de lei</h3>
+          <p>
+            Como parte do plano de modernização e transparência ativa, a Presidência da Câmara apresentou o novo acervo digitalizado do Arquivo Público Legislativo, permitindo que qualquer cidadão consulte leis municipais e históricos de votações pela internet.
+          </p>
+          <p class="data-noticia"><time datetime="2026-08-22">22/08/2026</time> — Transparência e Inovação</p>
+        </li>
+        <li>
+          <h3>Campanha de arborização urbana e coleta seletiva recebe apoio do Legislativo</h3>
+          <p>
+            Vereadores aprovaram indicação conjunta solicitando ao Executivo o plantio de duas mil mudas de árvores nativas em vias públicas e a instalação de ecopontos para recolhimento de materiais recicláveis em cinco bairros da cidade.
+          </p>
+          <p class="data-noticia"><time datetime="2026-08-14">14/08/2026</time> — Meio Ambiente</p>
         </li>
       </ul>
     </section>
 
     <section id="sessoes">
       <h2>Últimas sessões</h2>
+      <p class="descricao-secao">
+        Consulte o cronograma e o resultado das deliberações em plenário. As <strong>Sessões Ordinárias</strong> ocorrem semanalmente às quintas-feiras, às 9h, para votação da pauta regular, enquanto as <strong>Sessões Extraordinárias</strong> são convocadas para matérias de caráter urgente.
+      </p>
+      <div class="barra-filtros">
+        <select id="filtro-sessao">
+          <option value="todas">Todas as sessões</option>
+          <option value="Ordinária">Somente Ordinárias</option>
+          <option value="Extraordinária">Somente Extraordinárias</option>
+        </select>
+      </div>
       <div class="tabela-container">
         <table>
           <thead>
             <tr>
               <th scope="col">Data</th>
               <th scope="col">Tipo</th>
+              <th scope="col">Horário</th>
               <th scope="col">Assunto principal</th>
+              <th scope="col">Resultado</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>10/09/2026</td>
               <td>Ordinária</td>
-              <td>Aprovação do orçamento municipal</td>
+              <td>09h00</td>
+              <td>Aprovação do orçamento municipal e metas fiscais para o próximo exercício</td>
+              <td>Aprovado por unanimidade</td>
             </tr>
             <tr>
               <td>03/09/2026</td>
               <td>Ordinária</td>
-              <td>Discussão sobre saneamento básico</td>
+              <td>09h00</td>
+              <td>Discussão sobre ampliação da rede de saneamento básico nos bairros periféricos</td>
+              <td>Aprovado em 1º turno</td>
             </tr>
             <tr>
               <td>27/08/2026</td>
               <td>Extraordinária</td>
-              <td>Votação de projeto de lei da educação</td>
+              <td>14h30</td>
+              <td>Votação de projeto de lei de modernização dos laboratórios da educação básica</td>
+              <td>Aprovado por unanimidade</td>
             </tr>
             <tr>
               <td>20/08/2026</td>
               <td>Ordinária</td>
-              <td>Projeto de iluminação pública</td>
+              <td>09h00</td>
+              <td>Projeto de substituição da iluminação pública por lâmpadas de LED</td>
+              <td>Aprovado e encaminhado à sanção</td>
+            </tr>
+            <tr>
+              <td>13/08/2026</td>
+              <td>Ordinária</td>
+              <td>09h00</td>
+              <td>Adequação de calçadas e prédios públicos às normas de acessibilidade</td>
+              <td>Aprovado por unanimidade</td>
+            </tr>
+            <tr>
+              <td>06/08/2026</td>
+              <td>Extraordinária</td>
+              <td>15h00</td>
+              <td>Autorização de crédito suplementar para conclusão do posto de saúde Jardim das Flores</td>
+              <td>Aprovado em regime de urgência</td>
+            </tr>
+            <tr>
+              <td>30/07/2026</td>
+              <td>Ordinária</td>
+              <td>09h00</td>
+              <td>Implantação do Programa Wi-Fi Livre nas praças e mercados municipais</td>
+              <td>Aprovado e sancionado</td>
             </tr>
           </tbody>
         </table>
@@ -183,18 +280,50 @@
 
     <section id="contato">
       <h2>Contato</h2>
+      <p class="descricao-secao">
+        A Câmara Municipal de Buriti do Codô está de portas abertas para atender a população. Confira abaixo o endereço da sede, horários de expediente e os contatos diretos de cada setor administrativo.
+      </p>
 
       <div class="info-contato">
-        <p><strong>Endereço:</strong> Rua Principal, 123 - Centro</p>
-        <p><strong>Telefone:</strong> (86) 3215-0000</p>
-        <p><strong>Horário:</strong> Segunda a sexta, das 8h às 14h</p>
+        <h3>Sede do Poder Legislativo</h3>
+        <p><strong>Endereço:</strong> Rua Principal, 123 - Centro, Buriti do Codô - MA, CEP 65400-000</p>
+        <p><strong>Telefone Geral (PABX):</strong> (86) 3215-0000</p>
+        <p><strong>E-mail Institucional:</strong> contato@camaraburitidocodo.leg.br</p>
+        <p><strong>Horário de Atendimento:</strong> Segunda a sexta-feira, das 8h às 14h (Sessões plenárias às quintas-feiras, a partir das 9h)</p>
+      </div>
+
+      <div class="grade-informativa">
+        <div class="bloco-info">
+          <h3>Secretaria Legislativa</h3>
+          <p>Responsável pelo protocolo de projetos de lei, requerimentos, atas das sessões e certidões oficiais.</p>
+          <p><strong>Ramal:</strong> 101 | <strong>E-mail:</strong> secretaria@camaraburitidocodo.leg.br</p>
+        </div>
+        <div class="bloco-info">
+          <h3>Atendimento ao Cidadão e Gabinetes</h3>
+          <p>Agendamento de reuniões com os vereadores, inscrições para uso da Tribuna Livre e consulta a processos.</p>
+          <p><strong>Ramal:</strong> 102 | <strong>E-mail:</strong> atendimento@camaraburitidocodo.leg.br</p>
+        </div>
+        <div class="bloco-info">
+          <h3>Comunicação e Transparência</h3>
+          <p>Divulgação institucional, acompanhamento de audiências públicas e pedidos da Lei de Acesso à Informação (LAI).</p>
+          <p><strong>Ramal:</strong> 103 | <strong>E-mail:</strong> imprensa@camaraburitidocodo.leg.br</p>
+        </div>
       </div>
     </section>
 
     <section id="ouvidoria">
       <h2>Fale Conosco</h2>
-      <p>Utilize o canal abaixo para enviar suas dúvidas, sugestões, elogios ou reclamações diretamente para a Câmara.</p>
-      <br>
+      <p class="descricao-secao">
+        A Ouvidoria Parlamentar é o canal direto entre o cidadão e a Câmara Municipal. Utilize o formulário abaixo para registrar dúvidas, sugestões de projetos, reclamações ou elogios.
+      </p>
+
+      <div class="info-contato">
+        <h3>Como funciona o atendimento da Ouvidoria?</h3>
+        <p><strong>1. Registro da Manifestação:</strong> Preencha seus dados corretamente e descreva sua solicitação com clareza.</p>
+        <p><strong>2. Geração de Protocolo:</strong> Ao enviar o formulário, sua manifestação é registrada e encaminhada ao setor ou comissão competente.</p>
+        <p><strong>3. Prazo de Resposta:</strong> Em conformidade com a Lei de Acesso à Informação, o prazo máximo de resposta pelo e-mail informado é de até 15 dias úteis.</p>
+      </div>
+
       <form>
         <fieldset>
           <legend>Ouvidoria da Câmara</legend>
