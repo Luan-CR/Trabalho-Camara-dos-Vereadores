@@ -319,12 +319,12 @@
 
       <div class="info-contato">
         <h3>Como funciona o atendimento da Ouvidoria?</h3>
-        <p><strong>1. Registro da Manifestação:</strong> Preencha seus dados corretamente e descreva sua solicitação com clareza.</p>
-        <p><strong>2. Geração de Protocolo:</strong> Ao enviar o formulário, sua manifestação é registrada e encaminhada ao setor ou comissão competente.</p>
+        <p><strong>1. Registro da Manifestação:</strong> Preencha seus dados corretamente, selecione o assunto e descreva sua mensagem com clareza.</p>
+        <p><strong>2. Análise pelo Setor Responsável:</strong> Ao enviar o formulário, sua mensagem é encaminhada diretamente à secretaria ou comissão competente.</p>
         <p><strong>3. Prazo de Resposta:</strong> Em conformidade com a Lei de Acesso à Informação, o prazo máximo de resposta pelo e-mail informado é de até 15 dias úteis.</p>
       </div>
 
-      <form>
+      <form id="form-ouvidoria">
         <fieldset>
           <legend>Ouvidoria da Câmara</legend>
 
@@ -355,9 +355,15 @@
             <textarea id="mensagem" name="mensagem" rows="5" placeholder="Escreva sua mensagem aqui..." required></textarea>
           </div>
 
-          <button type="submit">Enviar</button>
+          <button type="submit">Enviar Mensagem</button>
+          <p id="feedback-ouvidoria" class="mensagem-feedback"></p>
         </fieldset>
       </form>
+
+      <div id="painel-protocolos" class="painel-detalhes oculto">
+        <h3>Mensagens Enviadas</h3>
+        <ul id="lista-protocolos" class="lista-protocolos"></ul>
+      </div>
     </section>
 
   </main>

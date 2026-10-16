@@ -424,3 +424,185 @@ if (menuSidebar) {
 }
 
 document.addEventListener("DOMContentLoaded", inicializarSessao);
+
+const formOuvidoria = document.querySelector("#form-ouvidoria");
+const campoNome = document.querySelector("#nome");
+const campoEmail = document.querySelector("#email");
+const campoAssunto = document.querySelector("#assunto");
+const campoMensagem = document.querySelector("#mensagem");
+const feedbackOuvidoria = document.querySelector("#feedback-ouvidoria");
+const painelProtocolos = document.querySelector("#painel-protocolos");
+const listaProtocolos = document.querySelector("#lista-protocolos");
+
+function definirCookie(nome, valor, dias = 7) {
+  const segundos = dias * 24 * 60 * 60;
+  document.cookie = `${encodeURIComponent(nome)}=${encodeURIComponent(valor)}; max-age=${segundos}; path=/`;
+}
+
+function lerCookie(nome, padrao = "") {
+  const nomeCodificado = `${encodeURIComponent(nome)}=`;
+  const partes = document.cookie.split(";");
+
+  for (const parte of partes) {
+    const item = parte.trim();
+    if (item.indexOf(nomeCodificado) === 0) {
+      return decodeURIComponent(item.substring(nomeCodificado.length));
+    }
+  }
+  return padrao;
+}
+
+function formatarConfirmacaoEnvio(saudacao, ...partes) {
+  let texto = saudacao;
+  for (let i = 1; i < arguments.length; i++) {
+    texto += ` — ${arguments[i]}`;
+  }
+  return texto;
+}
+
+function obterRotuloAssunto(valorAssunto) {
+  let rotulo = "Outro";
+  switch (valorAssunto) {
+    case "duvida":
+      rotulo = "Dúvida";
+      break;
+    case "sugestao":
+      rotulo = "Sugestão";
+      break;
+    case "reclamacao":
+      rotulo = "Reclamação";
+      break;
+    case "elogio":
+      rotulo = "Elogio";
+      break;
+    default:
+      rotulo = "Outro";
+      break;
+  }
+  return rotulo;
+}
+
+function inicializarCookiesOuvidoria() {
+  const nomeSalvo = lerCookie("cidadaoNome", "");
+  const emailSalvo = lerCookie("cidadaoEmail", "");
+  const assuntoSalvo = lerCookie("ultimoAssuntoOuvidoria", "");
+  const dataSalva = lerCookie("dataUltimoEnvio", "Nenhum");
+  const totalEnviadas = lerCookie("totalManifestacoesEnviadas", "0");
+
+  definirCookie("cidadaoNome", nomeSalvo);
+  definirCookie("cidadaoEmail", emailSalvo);
+  definirCookie("ultimoAssuntoOuvidoria", assuntoSalvo);
+  definirCookie("dataUltimoEnvio", dataSalva);
+  definirCookie("totalManifestacoesEnviadas", totalEnviadas);
+
+  if (campoNome && nomeSalvo) {
+    campoNome.value = nomeSalvo;
+  }
+
+  if (campoEmail && emailSalvo) {
+    campoEmail.value = emailSalvo;
+  }
+
+  if (campoAssunto && assuntoSalvo) {
+    campoAssunto.value = assuntoSalvo;
+  }
+}
+
+function adicionarMensagemNaLista(tituloCard, camposMensagem) {
+  if (!listaProtocolos || !painelProtocolos) return;
+
+  const item = document.createElement("li");
+  item.classList.add("item-protocolo");
+
+  const blocoTexto = document.createElement("div");
+  blocoTexto.classList.add("conteudo-mensagem");
+
+  const titulo = document.createElement("h4");
+  titulo.textContent = tituloCard;
+  blocoTexto.appendChild(titulo);
+
+  for (const chave in camposMensagem) {
+    const paragrafo = document.createElement("p");
+    const rotulo = document.createElement("strong");
+    rotulo.textContent = `${chave}: `;
+    const valor = document.createTextNode(camposMensagem[chave]);
+    paragrafo.appendChild(rotulo);
+    paragrafo.appendChild(valor);
+    blocoTexto.appendChild(paragrafo);
+  }
+
+  const botaoRemover = document.createElement("button");
+  botaoRemover.type = "button";
+  botaoRemover.classList.add("btn-remover-protocolo");
+  botaoRemover.textContent = "Excluir mensagem";
+
+  item.appendChild(blocoTexto);
+  item.appendChild(botaoRemover);
+  listaProtocolos.appendChild(item);
+  painelProtocolos.classList.remove("oculto");
+}
+
+if (formOuvidoria) {
+  formOuvidoria.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const nome = campoNome ? campoNome.value.trim() : "";
+    const email = campoEmail ? campoEmail.value.trim() : "";
+    const assunto = campoAssunto ? campoAssunto.value : "";
+    const mensagem = campoMensagem ? campoMensagem.value.trim() : "";
+
+    if (nome.length < 3 || mensagem.length < 5 || !assunto) {
+      if (feedbackOuvidoria) {
+        feedbackOuvidoria.textContent = "Por favor, preencha todos os campos corretamente antes de enviar.";
+      }
+      return;
+    }
+
+    const dataEnvio = new Date().toLocaleDateString("pt-BR");
+    const rotuloAssunto = obterRotuloAssunto(assunto);
+    const totalAnterior = Number(lerCookie("totalManifestacoesEnviadas", "0"));
+    const novoTotal = totalAnterior + 1;
+
+    definirCookie("cidadaoNome", nome);
+    definirCookie("cidadaoEmail", email);
+    definirCookie("ultimoAssuntoOuvidoria", assunto);
+    definirCookie("dataUltimoEnvio", dataEnvio);
+    definirCookie("totalManifestacoesEnviadas", novoTotal);
+
+    const tituloCard = `${rotuloAssunto} — Enviada em ${dataEnvio}`;
+    const camposMensagem = {
+      Remetente: `${nome} (${email})`,
+      Mensagem: mensagem
+    };
+
+    adicionarMensagemNaLista(tituloCard, camposMensagem);
+
+    if (feedbackOuvidoria) {
+      feedbackOuvidoria.textContent = formatarConfirmacaoEnvio(
+        "Mensagem enviada com sucesso!",
+        `Assunto: ${rotuloAssunto}`,
+        `Registrada por ${nome}`
+      );
+    }
+
+    if (campoMensagem) {
+      campoMensagem.value = "";
+    }
+  });
+}
+
+if (listaProtocolos) {
+  listaProtocolos.addEventListener("click", (event) => {
+    if (event.target.matches(".btn-remover-protocolo")) {
+      const itemParaRemover = event.target.closest(".item-protocolo");
+      if (itemParaRemover) {
+        itemParaRemover.remove();
+      }
+      if (listaProtocolos.querySelectorAll(".item-protocolo").length === 0 && painelProtocolos) {
+        painelProtocolos.classList.add("oculto");
+      }
+    }
+  });
+}
+
+document.addEventListener("DOMContentLoaded", inicializarCookiesOuvidoria);

@@ -1,0 +1,30 @@
+CHANGELOG - TRABALHO 02 (ENTREGA PARCIAL 1 - 16/10/2026)
+Portal da Câmara Municipal de Buriti do Codô
+
+Melhorias implementadas em relação ao Trabalho 01:
+
+1. Preferências do Usuário, Acessibilidade Visual e localStorage (Luan Cristian):
+- Adição do botão de Configurações no cabeçalho com painel suspenso interativo (uso de event.stopPropagation para controle de abertura e fechamento ao clicar fora).
+- Implementação do Modo Escuro / Modo Claro com alternância dinâmica de classes CSS (classList.toggle, add e remove).
+- Controles dinâmicos de tamanho da fonte (A- e A+) para acessibilidade visual.
+- Inclusão do card do 4º parlamentar (Nilson Bruno - 2º Secretário) na listagem da Câmara.
+- Persistência de 5 informações no localStorage: temaEscuro, tamanhoFonte, totalVisitas, ultimoAcesso e ultimoVereadorConsultado.
+
+2. Interatividade na Seção de Vereadores e Manipulação do DOM (Rian Leal):
+- Alinhamento proporcional dos cards de vereadores com Flexbox e CSS Grid.
+- Filtro de busca em tempo real por nome do parlamentar (evento input) e seletor de filtro por partido político (evento change).
+- Painel dinâmico de detalhes do parlamentar ("Ver detalhes" / "Fechar detalhes") construído via criação de nós do DOM (document.createElement e appendChild), exibindo biografia, mandato, comissão permanente, gabinete e projetos de lei.
+- Uso de delegação de eventos (closest) no container de vereadores e integração com o rodapé.
+
+3. Navegação Dinâmica por Seções, Filtros de Conteúdo e sessionStorage (Gustavo Antonio):
+- Navegação dinâmica pela barra lateral ("Seções": Geral, Sobre, Vereadores, Notícias, Sessões, Contato e Ouvidoria) exibindo as páginas isoladamente ou em conjunto sem recarregar o navegador (event.preventDefault).
+- Ampliação do conteúdo informativo de todas as seções (funções do Legislativo, Comissões Permanentes, Papel da Mesa Diretora, 6 notícias completas, 7 sessões plenárias detalhadas, setores de contato com ramais e passo a passo da Ouvidoria).
+- Busca de notícias por palavra-chave (evento keyup) com contador dinâmico de resultados e marcação visual de notícias lidas ao clicar.
+- Filtro dinâmico na tabela de Últimas Sessões por tipo de sessão (Todas, Ordinária e Extraordinária).
+- Persistência de 5 informações no sessionStorage: secaoAtiva, termoBuscaNoticia, filtroTipoSessao, noticiasMarcadas e cliquesSessao.
+
+4. Ouvidoria Interativa, Mensagens Dinâmicas e Cookies HTTP (Nilson Bruno):
+- Validação dos dados do formulário da Ouvidoria Parlamentar no evento submit com prevenção do recarregamento padrão (event.preventDefault).
+- Classificação de assuntos com estrutura switch, formatação de mensagem de confirmação utilizando parâmetros rest (...partes) e objeto arguments, e percorrimento de dados com for...in.
+- Criação dinâmica de cards organizados de Mensagens Enviadas (createElement e appendChild), exibindo título com assunto e data, remetente e texto da mensagem em linhas separadas, com botão para exclusão individual do item no DOM (.remove() e delegação com matches/closest).
+- Armazenamento e leitura de 5 cookies HTTP via document.cookie: cidadaoNome, cidadaoEmail, ultimoAssuntoOuvidoria, dataUltimoEnvio e totalManifestacoesEnviadas, preenchendo automaticamente os dados do cidadão ao retornar à página.
