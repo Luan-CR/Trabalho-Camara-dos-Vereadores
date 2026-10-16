@@ -1,0 +1,468 @@
+:root {
+  --cor-principal: #8B6914;
+  --cor-escura: #5C4209;
+  --cinza-claro: #f2f2f2;
+  --cinza-borda: #cccccc;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #222222;
+  line-height: 1.6;
+}
+
+.pular-conteudo {
+  position: absolute;
+  top: -100px;
+  left: 10px;
+  background-color: var(--cor-principal);
+  color: #ffffff;
+  padding: 8px 15px;
+  z-index: 100;
+  text-decoration: none;
+  border-radius: 0 0 5px 5px;
+}
+
+.pular-conteudo:focus {
+  top: 0;
+}
+
+header {
+  background-color: var(--cor-principal);
+  color: #ffffff;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+}
+
+.cabecalho-container {
+  display: flex;
+  justify-content: center;  
+  align-items: center;
+  gap: 15px;
+}
+
+header h1 {
+  font-size: 1.5rem;
+}
+
+header p {
+  font-size: 0.9rem;
+}
+
+.pagina-container {
+  display: flex;
+  align-items: flex-start;
+  min-height: calc(100vh - 80px);
+}
+
+.sidebar {
+  width: 180px;
+  min-width: 180px;
+  background-color: var(--cor-escura);
+  position: sticky;
+  top: 0;
+  min-height: 100vh;
+  padding: 20px 0;
+}
+
+.sidebar ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.sidebar ul li a {
+  display: block;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 14px 20px;
+  transition: background-color 0.2s;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a:focus {
+  background-color: var(--cor-principal);
+  text-decoration: none;
+}
+
+.sidebar ul li a.link-ativo {
+  background-color: var(--cor-principal);
+  border-left: 4px solid #ffffff;
+}
+
+main {
+  flex: 1;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+section {
+  margin-bottom: 40px;
+}
+
+h2 {
+  color: var(--cor-principal);
+  margin-bottom: 15px;
+  border-bottom: 2px solid var(--cor-principal);
+  padding-bottom: 5px;
+}
+
+.lista-vereadores {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.foto-perfil {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+  border: 3px solid var(--cor-principal);
+}
+
+.card-vereador {
+  background-color: var(--cinza-claro);
+  text-align: center;
+  border: 1px solid var(--cinza-borda);
+  border-radius: 5px;
+  padding: 15px;
+  transition: box-shadow 0.3s, border-color 0.3s;
+}
+
+.card-vereador h3 {
+  color: var(--cor-principal);
+  margin-bottom: 5px;
+}
+
+.lista-noticias {
+  list-style: none;
+}
+
+.lista-noticias li {
+  background-color: var(--cinza-claro);
+  border-left: 4px solid var(--cor-principal);
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 0 5px 5px 0;
+}
+
+.lista-noticias h3 {
+  color: var(--cor-principal);
+  margin-bottom: 5px;
+  font-size: 1.1rem;
+}
+
+.data-noticia {
+  margin-top: 8px;
+  font-size: 0.85rem;
+  color: #666666;
+}
+
+.tabela-container {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid var(--cinza-borda);
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: var(--cor-principal);
+  color: #ffffff;
+}
+
+tbody tr:nth-child(even) {
+  background-color: var(--cinza-claro);
+}
+
+.info-contato {
+  background-color: var(--cinza-claro);
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.info-contato p {
+  margin-bottom: 5px;
+}
+
+fieldset {
+  border: 1px solid var(--cinza-borda);
+  border-radius: 5px;
+  padding: 20px;
+}
+
+legend {
+  font-weight: bold;
+  color: var(--cor-principal);
+  padding: 0 5px;
+}
+
+.campo {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input, textarea, select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #999999;
+  border-radius: 3px;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--cor-principal);
+  outline: 2px solid var(--cor-principal);
+  outline-offset: 1px;
+}
+
+button {
+  background-color: var(--cor-principal);
+  color: #ffffff;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  width: 100%;
+  transition: background-color 0.2s;
+}
+
+button:hover,
+button:focus {
+  background-color: var(--cor-escura);
+}
+
+footer {
+  background-color: var(--cor-principal);
+  color: #ffffff;
+  text-align: center;
+  padding: 15px;
+  font-size: 0.9rem;
+}
+
+body.tema-escuro {
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+}
+
+body.tema-escuro .card-vereador,
+body.tema-escuro .lista-noticias li,
+body.tema-escuro .info-contato,
+body.tema-escuro tbody tr:nth-child(even) {
+  background-color: #2d2d2d;
+  color: #f0f0f0;
+  border-color: #555555;
+}
+
+body.tema-escuro input,
+body.tema-escuro textarea,
+body.tema-escuro select {
+  background-color: #2d2d2d;
+  color: #ffffff;
+  border-color: #666666;
+}
+
+.config-container {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.btn-config {
+  width: auto;
+  padding: 8px 14px;
+  font-size: 0.9rem;
+  background-color: var(--cor-escura);
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+}
+
+.painel-config {
+  position: absolute;
+  top: 45px;
+  right: 0;
+  width: 220px;
+  background-color: #ffffff;
+  color: #222222;
+  border: 1px solid var(--cinza-borda);
+  border-radius: 5px;
+  padding: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 200;
+  text-align: left;
+}
+
+body.tema-escuro .painel-config {
+  background-color: #2d2d2d;
+  color: #f0f0f0;
+  border-color: #555555;
+}
+
+.item-config {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.item-config:last-child {
+  margin-bottom: 0;
+}
+
+.controles-fonte {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-acao {
+  width: auto;
+  padding: 5px 10px;
+  font-size: 0.85rem;
+  background-color: var(--cor-principal);
+}
+
+.barra-filtros {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.barra-filtros input,
+.barra-filtros select {
+  flex: 1;
+  min-width: 180px;
+}
+
+.card-vereador.favorito {
+  border: 2px solid var(--cor-principal);
+  box-shadow: 0 0 10px rgba(139, 105, 20, 0.4);
+}
+
+.btn-card {
+  margin-top: 10px;
+  padding: 8px 12px;
+  font-size: 0.85rem;
+}
+
+.noticia-lida {
+  opacity: 0.65;
+}
+
+.painel-detalhes {
+  background-color: var(--cinza-claro);
+  border-left: 4px solid var(--cor-principal);
+  padding: 12px;
+  margin-top: 15px;
+  border-radius: 4px;
+}
+
+body.tema-escuro .painel-detalhes {
+  background-color: #2d2d2d;
+}
+
+.oculto {
+  display: none;
+}
+
+.mensagem-feedback {
+  margin-top: 12px;
+  font-weight: bold;
+  color: var(--cor-principal);
+}
+
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 1.3rem;
+  }
+
+  .config-container {
+    position: static;
+    margin-top: 12px;
+    display: inline-block;
+  }
+
+  .painel-config {
+    right: 50%;
+    transform: translateX(50%);
+  }
+
+  .lista-vereadores {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .pagina-container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    min-height: auto;
+    position: static;
+    padding: 10px 0;
+  }
+
+  .sidebar ul {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+  }
+
+  .sidebar ul li a {
+    padding: 8px 12px;
+  }
+
+  .cabecalho-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  .lista-vereadores {
+    grid-template-columns: 1fr;
+  }
+
+  table {
+    font-size: 0.85rem;
+  }
+
+  th, td {
+    padding: 8px 6px;
+  }
+}
