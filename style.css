@@ -469,6 +469,18 @@ body.tema-escuro .painel-config {
   min-width: 180px;
 }
 
+.btn-limpar {
+  width: auto;
+  padding: 8px 14px;
+  font-size: 0.9rem;
+}
+
+.contador-resultados {
+  margin-bottom: 15px;
+  font-weight: bold;
+  color: var(--cor-principal);
+}
+
 .card-vereador.card-ativo {
   border: 2px solid var(--cor-principal);
   box-shadow: 0 4px 12px rgba(139, 105, 20, 0.3);

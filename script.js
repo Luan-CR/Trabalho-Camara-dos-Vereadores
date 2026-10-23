@@ -207,6 +207,8 @@ const dadosVereadores = [
 
 const campoBuscaVereador = document.querySelector("#busca-vereador");
 const seletorPartido = document.querySelector("#filtro-partido");
+const btnLimparVereadores = document.querySelector("#btn-limpar-vereadores");
+const contadorVereadores = document.querySelector("#contador-vereadores");
 const containerVereadores = document.querySelector("#container-vereadores");
 const painelVereador = document.querySelector("#painel-vereador");
 let vereadorAbertoAtual = null;
@@ -227,6 +229,7 @@ function filtrarVereadores() {
   const termo = campoBuscaVereador ? campoBuscaVereador.value.toLowerCase().trim() : "";
   const partidoEscolhido = seletorPartido ? seletorPartido.value : "todos";
   const cartoes = containerVereadores.querySelectorAll(".card-vereador");
+  let visiveis = 0;
 
   for (const cartao of cartoes) {
     const nome = cartao.getAttribute("data-nome").toLowerCase();
@@ -236,10 +239,31 @@ function filtrarVereadores() {
 
     if (correspondeNome && correspondePartido) {
       cartao.classList.remove("oculto");
+      visiveis++;
     } else {
       cartao.classList.add("oculto");
     }
   }
+
+  if (contadorVereadores) {
+    if (visiveis === 0) {
+      contadorVereadores.textContent = "Nenhum vereador encontrado para os filtros selecionados.";
+    } else {
+      contadorVereadores.textContent = `Exibindo ${visiveis} de ${cartoes.length} vereadores.`;
+    }
+  }
+}
+
+function limparFiltrosVereadores() {
+  if (campoBuscaVereador) {
+    campoBuscaVereador.value = "";
+  }
+
+  if (seletorPartido) {
+    seletorPartido.value = "todos";
+  }
+
+  filtrarVereadores();
 }
 
 function atualizarEstadoCartoes(nomeAtivo) {
@@ -300,6 +324,10 @@ if (seletorPartido) {
   seletorPartido.addEventListener("change", filtrarVereadores);
 }
 
+if (btnLimparVereadores) {
+  btnLimparVereadores.addEventListener("click", limparFiltrosVereadores);
+}
+
 if (containerVereadores) {
   containerVereadores.addEventListener("click", (event) => {
     const botaoDetalhes = event.target.closest(".btn-detalhes");
@@ -327,6 +355,8 @@ if (containerVereadores) {
     renderizarDetalhesVereador(dados);
   });
 }
+
+filtrarVereadores();
 
 const campoBuscaNoticia = document.querySelector("#busca-noticia");
 const listaNoticias = document.querySelector(".lista-noticias");
