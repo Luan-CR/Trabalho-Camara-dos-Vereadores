@@ -362,6 +362,7 @@ const campoBuscaNoticia = document.querySelector("#busca-noticia");
 const listaNoticias = document.querySelector(".lista-noticias");
 const contadorNoticias = document.querySelector("#contador-noticias");
 const seletorSessao = document.querySelector("#filtro-sessao");
+const contadorSessoes = document.querySelector("#contador-sessoes");
 const linhasSessoes = document.querySelectorAll("#sessoes tbody tr");
 const menuSidebar = document.querySelector(".sidebar");
 const secoesPagina = document.querySelectorAll("main section");
@@ -445,6 +446,7 @@ function filtrarNoticias() {
 function filtrarTabelaSessoes() {
   const tipoSelecionado = seletorSessao ? seletorSessao.value : "todas";
   salvarSessao("filtroTipoSessao", tipoSelecionado);
+  let visiveis = 0;
 
   for (const linha of linhasSessoes) {
     const celulas = linha.querySelectorAll("td");
@@ -453,9 +455,14 @@ function filtrarTabelaSessoes() {
 
     if (tipoSelecionado === "todas" || tipoLinha === tipoSelecionado) {
       linha.classList.remove("oculto");
+      visiveis++;
     } else {
       linha.classList.add("oculto");
     }
+  }
+
+  if (contadorSessoes) {
+    contadorSessoes.textContent = `Exibindo ${visiveis} de ${linhasSessoes.length} sessões plenárias.`;
   }
 }
 
@@ -469,12 +476,21 @@ if (seletorSessao) {
 
 if (listaNoticias) {
   listaNoticias.addEventListener("click", (event) => {
-    const itemNoticia = event.target.closest("li");
+    const botaoLer = event.target.closest(".btn-ler-noticia");
+    if (!botaoLer) return;
+
+    const itemNoticia = botaoLer.closest("li");
     if (!itemNoticia) return;
 
-    itemNoticia.classList.toggle("noticia-lida");
-    const lidas = listaNoticias.querySelectorAll(".noticia-lida").length;
-    salvarSessao("noticiasMarcadas", lidas);
+    const blocoDetalhe = itemNoticia.querySelector(".detalhe-noticia");
+    if (!blocoDetalhe) return;
+
+    blocoDetalhe.classList.toggle("oculto");
+    const oculto = blocoDetalhe.classList.contains("oculto");
+    botaoLer.textContent = oculto ? "Ler notícia completa" : "Ocultar detalhes";
+
+    const abertas = listaNoticias.querySelectorAll(".detalhe-noticia:not(.oculto)").length;
+    salvarSessao("noticiasMarcadas", abertas);
   });
 }
 

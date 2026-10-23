@@ -250,10 +250,27 @@ h2 {
   font-size: 1.1rem;
 }
 
+.detalhe-noticia {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--cinza-borda);
+}
+
+body.tema-escuro .detalhe-noticia {
+  border-top-color: #555555;
+}
+
 .data-noticia {
   margin-top: 8px;
   font-size: 0.85rem;
   color: #666666;
+}
+
+.btn-ler-noticia {
+  width: auto;
+  margin-top: 10px;
+  padding: 6px 14px;
+  font-size: 0.85rem;
 }
 
 .tabela-container {
