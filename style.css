@@ -1,6 +1,6 @@
 :root {
-  --cor-principal: #8B6914;
-  --cor-escura: #5C4209;
+  --cor-principal: #017A4D;
+  --cor-escura: #005637;
   --cinza-claro: #f2f2f2;
   --cinza-borda: #cccccc;
 }
@@ -34,15 +34,36 @@ body {
 }
 
 header {
+  background-image: url(Imagens/Pedra_Furada_Picos_Piaui_3.JPG);
+  background-size: cover;
+  background-position: center;
   background-color: var(--cor-principal);
   color: #ffffff;
-  padding: 20px;
+  padding: 10px;
   text-align: center;
   position: relative;
+  min-height: 150px;
+}
+
+#BuritiLogo{
+  max-width: 100%;
+  width: auto;
+  height: 150px;
+  padding: 0%;
+  margin: 0%;
+}
+
+.cabecalho-texto{
+  background-color: var(--cor-principal);
+  max-width: 60%;
+  padding-left: 35px;
+  padding-right: 35px;
+  margin: 0 auto;
 }
 
 .cabecalho-container {
   display: flex;
+  flex: 1;
   justify-content: center;  
   align-items: center;
   gap: 15px;
