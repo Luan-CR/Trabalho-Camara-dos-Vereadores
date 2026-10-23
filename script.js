@@ -515,8 +515,11 @@ const campoNome = document.querySelector("#nome");
 const campoEmail = document.querySelector("#email");
 const campoAssunto = document.querySelector("#assunto");
 const campoMensagem = document.querySelector("#mensagem");
+const contadorCaracteres = document.querySelector("#contador-caracteres");
+const btnLimparOuvidoria = document.querySelector("#btn-limpar-ouvidoria");
 const feedbackOuvidoria = document.querySelector("#feedback-ouvidoria");
 const painelProtocolos = document.querySelector("#painel-protocolos");
+const contadorProtocolos = document.querySelector("#contador-protocolos");
 const listaProtocolos = document.querySelector("#lista-protocolos");
 
 function definirCookie(nome, valor, dias = 7) {
@@ -567,6 +570,27 @@ function obterRotuloAssunto(valorAssunto) {
   return rotulo;
 }
 
+function atualizarContadorCaracteres() {
+  if (!campoMensagem || !contadorCaracteres) return;
+  const quantidade = campoMensagem.value.length;
+  contadorCaracteres.textContent = `Caracteres digitados: ${quantidade} / 300`;
+}
+
+function atualizarContadorProtocolos() {
+  if (!listaProtocolos || !contadorProtocolos) return;
+  const total = listaProtocolos.querySelectorAll(".item-protocolo").length;
+  contadorProtocolos.textContent = `Total de mensagens registradas nesta sessão: ${total}`;
+}
+
+function limparFormularioOuvidoria() {
+  if (campoNome) campoNome.value = "";
+  if (campoEmail) campoEmail.value = "";
+  if (campoAssunto) campoAssunto.value = "";
+  if (campoMensagem) campoMensagem.value = "";
+  if (feedbackOuvidoria) feedbackOuvidoria.textContent = "";
+  atualizarContadorCaracteres();
+}
+
 function inicializarCookiesOuvidoria() {
   const nomeSalvo = lerCookie("cidadaoNome", "");
   const emailSalvo = lerCookie("cidadaoEmail", "");
@@ -591,6 +615,8 @@ function inicializarCookiesOuvidoria() {
   if (campoAssunto && assuntoSalvo) {
     campoAssunto.value = assuntoSalvo;
   }
+
+  atualizarContadorCaracteres();
 }
 
 function adicionarMensagemNaLista(tituloCard, camposMensagem) {
@@ -625,6 +651,15 @@ function adicionarMensagemNaLista(tituloCard, camposMensagem) {
   item.appendChild(botaoRemover);
   listaProtocolos.appendChild(item);
   painelProtocolos.classList.remove("oculto");
+  atualizarContadorProtocolos();
+}
+
+if (campoMensagem) {
+  campoMensagem.addEventListener("input", atualizarContadorCaracteres);
+}
+
+if (btnLimparOuvidoria) {
+  btnLimparOuvidoria.addEventListener("click", limparFormularioOuvidoria);
 }
 
 if (formOuvidoria) {
@@ -672,6 +707,7 @@ if (formOuvidoria) {
 
     if (campoMensagem) {
       campoMensagem.value = "";
+      atualizarContadorCaracteres();
     }
   });
 }
@@ -683,6 +719,7 @@ if (listaProtocolos) {
       if (itemParaRemover) {
         itemParaRemover.remove();
       }
+      atualizarContadorProtocolos();
       if (listaProtocolos.querySelectorAll(".item-protocolo").length === 0 && painelProtocolos) {
         painelProtocolos.classList.add("oculto");
       }

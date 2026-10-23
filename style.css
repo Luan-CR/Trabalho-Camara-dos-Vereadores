@@ -370,6 +370,31 @@ button:focus {
   background-color: var(--cor-escura);
 }
 
+.contador-caracteres {
+  margin-top: 6px;
+  font-size: 0.85rem;
+  color: #555555;
+}
+
+body.tema-escuro .contador-caracteres {
+  color: #cccccc;
+}
+
+.botoes-formulario {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.botoes-formulario button {
+  flex: 1;
+  min-width: 160px;
+}
+
+.btn-secundario {
+  background-color: var(--cor-escura);
+}
+
 footer {
   background-color: var(--cor-principal);
   color: #ffffff;

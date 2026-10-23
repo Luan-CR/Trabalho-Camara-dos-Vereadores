@@ -28,3 +28,28 @@ Melhorias implementadas em relação ao Trabalho 01:
 - Classificação de assuntos com estrutura switch, formatação de mensagem de confirmação utilizando parâmetros rest (...partes) e objeto arguments, e percorrimento de dados com for...in.
 - Criação dinâmica de cards organizados de Mensagens Enviadas (createElement e appendChild), exibindo título com assunto e data, remetente e texto da mensagem em linhas separadas, com botão para exclusão individual do item no DOM (.remove() e delegação com matches/closest).
 - Armazenamento e leitura de 5 cookies HTTP via document.cookie: cidadaoNome, cidadaoEmail, ultimoAssuntoOuvidoria, dataUltimoEnvio e totalManifestacoesEnviadas, preenchendo automaticamente os dados do cidadão ao retornar à página.
+
+------------------------------------------------------------------------
+
+CHANGELOG - TRABALHO 02 (ENTREGA PARCIAL 2 - 23/10/2026)
+
+Novas funcionalidades e refinamentos implementados pela equipe:
+
+1. Restauração de Padrões, Recolhimento do Menu Lateral e Destaque Interativo (Luan Cristian):
+- Inclusão do botão "Restaurar padrão" no painel de Configurações para redefinir rapidamente o tema para o Modo Claro e o tamanho da fonte para 16px no DOM e no localStorage.
+- Adição do botão "Ocultar menu" / "Mostrar menu" na barra lateral para recolher ou expandir a lista de seções dinamicamente (classList.toggle).
+- Efeito de destaque visual interativo nos blocos informativos das seções utilizando os eventos mouseover e mouseout.
+
+2. Contador de Parlamentares Filtrados e Botão de Limpeza de Filtros (Nilson Bruno):
+- Adição do contador dinâmico de resultados na seção Vereadores, informando quantos parlamentares estão visíveis conforme a busca por nome ou partido e exibindo aviso quando nenhum parlamentar corresponde à busca.
+- Inclusão do botão "Limpar filtros" para restaurar imediatamente o campo de busca textual, o seletor de partidos e a listagem completa de vereadores.
+
+3. Expansão de Detalhes nas Notícias e Contador Dinâmico de Sessões (Gustavo Antonio):
+- Implementação do botão "Ler notícia completa" / "Ocultar detalhes" em cada matéria da seção Notícias usando delegação de eventos (closest), expandindo os detalhes completos da notícia no DOM e atualizando a contagem no sessionStorage.
+- Inclusão do contador dinâmico de sessões plenárias exibidas na seção Últimas Sessões, atualizando automaticamente ao alternar entre Todas, Ordinárias e Extraordinárias.
+
+4. Contador de Caracteres em Tempo Real e Controles na Ouvidoria (Rian Leal):
+- Implementação de contador de caracteres em tempo real (0 / 300) no campo de mensagem da Ouvidoria utilizando o evento input.
+- Adição do botão "Limpar campos" no formulário da Ouvidoria para redefinir os campos de entrada, o contador de caracteres e o aviso de confirmação.
+- Inclusão de contador dinâmico do total de mensagens registradas no painel "Mensagens Enviadas", sincronizado ao adicionar ou excluir manifestações.
+- Atualização do arquivo CHANGELOG.txt documentando a evolução da Entrega Parcial 2.

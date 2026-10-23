@@ -383,16 +383,21 @@
 
           <div class="campo">
             <label for="mensagem">Mensagem:</label>
-            <textarea id="mensagem" name="mensagem" rows="5" placeholder="Escreva sua mensagem aqui..." required></textarea>
+            <textarea id="mensagem" name="mensagem" rows="5" maxlength="300" placeholder="Escreva sua mensagem aqui..." required></textarea>
+            <p id="contador-caracteres" class="contador-caracteres">Caracteres digitados: 0 / 300</p>
           </div>
 
-          <button type="submit">Enviar Mensagem</button>
+          <div class="botoes-formulario">
+            <button type="submit">Enviar Mensagem</button>
+            <button type="button" id="btn-limpar-ouvidoria" class="btn-secundario">Limpar campos</button>
+          </div>
           <p id="feedback-ouvidoria" class="mensagem-feedback"></p>
         </fieldset>
       </form>
 
       <div id="painel-protocolos" class="painel-detalhes oculto">
         <h3>Mensagens Enviadas</h3>
+        <p id="contador-protocolos" class="contador-resultados"></p>
         <ul id="lista-protocolos" class="lista-protocolos"></ul>
       </div>
     </section>
