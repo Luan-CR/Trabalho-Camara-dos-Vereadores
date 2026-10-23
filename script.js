@@ -4,8 +4,12 @@ const painelConfig = document.querySelector("#painel-config");
 const btnTema = document.querySelector("#btn-tema");
 const btnAumentarFonte = document.querySelector("#btn-aumentar-fonte");
 const btnDiminuirFonte = document.querySelector("#btn-diminuir-fonte");
+const btnRestaurarConfig = document.querySelector("#btn-restaurar-config");
+const btnMenu = document.querySelector("#btn-menu");
+const menuLateral = document.querySelector(".sidebar");
 const valorFonte = document.querySelector("#valor-fonte");
 const infoAcesso = document.querySelector("#info-acesso");
+const blocosInfo = document.querySelectorAll(".bloco-info");
 
 const salvarLocal = function (chave, valor) {
   localStorage.setItem(chave, String(valor));
@@ -103,6 +107,41 @@ if (btnAumentarFonte) {
 
 if (btnDiminuirFonte) {
   btnDiminuirFonte.addEventListener("click", () => alterarTamanhoFonte(-2));
+}
+
+function restaurarConfiguracoesPadrao() {
+  corpoPagina.classList.remove("tema-escuro");
+  corpoPagina.style.fontSize = "16px";
+  salvarLocal("temaEscuro", "nao");
+  salvarLocal("tamanhoFonte", "16");
+
+  if (valorFonte) {
+    valorFonte.textContent = "16px";
+  }
+
+  atualizarTextoBotaoTema();
+}
+
+if (btnRestaurarConfig) {
+  btnRestaurarConfig.addEventListener("click", restaurarConfiguracoesPadrao);
+}
+
+if (btnMenu && menuLateral) {
+  btnMenu.addEventListener("click", () => {
+    menuLateral.classList.toggle("sidebar-recolhida");
+    const recolhido = menuLateral.classList.contains("sidebar-recolhida");
+    btnMenu.textContent = recolhido ? "Mostrar menu" : "Ocultar menu";
+  });
+}
+
+for (const bloco of blocosInfo) {
+  bloco.addEventListener("mouseover", () => {
+    bloco.classList.add("bloco-destaque");
+  });
+
+  bloco.addEventListener("mouseout", () => {
+    bloco.classList.remove("bloco-destaque");
+  });
 }
 
 document.addEventListener("DOMContentLoaded", inicializarPreferencias);
