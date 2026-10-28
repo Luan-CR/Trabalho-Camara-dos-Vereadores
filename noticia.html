@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notícia - Câmara Municipal de Buriti do Codô</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body data-pagina="interna">
+
+  <a href="#conteudo" class="pular-conteudo">Pular para o conteúdo</a>
+
+  <header>
+    <div class="cabecalho-container">
+      <img src="Imagens/Buriti-do-codo.png" id="BuritiLogo">
+      <div class="cabecalho-texto">
+        <h1>Câmara Municipal de Buriti do Codô</h1>
+        <p id="subtitulo-camara">Trabalhando junto com a população por uma cidade melhor</p>
+      </div>
+    </div>
+    <div class="config-container">
+      <button type="button" id="btn-config" class="btn-config">Configurações</button>
+      <div id="painel-config" class="painel-config oculto">
+        <div class="item-config">
+          <span>Tema:</span>
+          <button type="button" id="btn-tema" class="btn-acao">Modo Escuro</button>
+        </div>
+        <div class="item-config">
+          <span>Fonte:</span>
+          <div class="controles-fonte">
+            <button type="button" id="btn-diminuir-fonte" class="btn-acao">A-</button>
+            <span id="valor-fonte">16px</span>
+            <button type="button" id="btn-aumentar-fonte" class="btn-acao">A+</button>
+          </div>
+        </div>
+        <div class="item-config">
+          <button type="button" id="btn-restaurar-config" class="btn-acao btn-restaurar">Restaurar padrão</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="pagina-container">
+
+    <nav class="sidebar" aria-label="Menu principal">
+      <button type="button" id="btn-menu" class="btn-menu">Ocultar menu</button>
+      <p class="titulo-sidebar">Seções</p>
+      <ul>
+        <li><a href="index.html#todas">Geral</a></li>
+        <li><a href="index.html#sobre">Sobre</a></li>
+        <li><a href="index.html#vereadores">Vereadores</a></li>
+        <li><a href="index.html#noticias" class="link-ativo">Notícias</a></li>
+        <li><a href="index.html#sessoes">Sessões</a></li>
+        <li><a href="index.html#contato">Contato</a></li>
+        <li><a href="index.html#ouvidoria">Ouvidoria</a></li>
+      </ul>
+    </nav>
+
+    <main id="conteudo">
+      <div id="conteudo-noticia"></div>
+  </main>
+
+  </div>
+
+  <footer>
+    <p>Câmara Municipal de Buriti do Codô - Rua Principal, 123 - Centro</p>
+    <p id="info-acesso"></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

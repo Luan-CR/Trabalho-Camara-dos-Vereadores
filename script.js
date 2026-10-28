@@ -205,6 +205,69 @@ const dadosVereadores = [
   }
 ];
 
+const dadosNoticias = [
+    {
+    id: "praca-central",
+    titulo: "Câmara aprova projeto de revitalização da praça central",
+    resumo: "Os vereadores aprovaram por unanimidade o projeto que prevê a reforma completa da Praça da República, incluindo nova iluminação em LED, bancos padronizados, pista de caminhada acessível e área de lazer segura para crianças. As obras têm início previsto para o próximo mês.",
+    rotulo: "Detalhes do Projeto",
+    detalhe: "O investimento aprovado contempla o piso tátil em todo o entorno da praça, reforma do coreto histórico, instalação de bebedouros públicos e pontos do programa Wi-Fi Livre. A execução será acompanhada quinzenalmente pela Comissão de Urbanismo, Meio Ambiente e Infraestrutura.",
+    iso: "2026-09-15",
+    data: "15/09/2026",
+    cat: "Infraestrutura e Urbanismo"
+    },
+    {
+    id: "transporte-coletivo",
+    titulo: "Audiência pública sobre transporte coletivo é marcada para outubro",
+    resumo: "A comissão de mobilidade urbana convocou audiência pública para debater a reestruturação das linhas de ônibus do município, ampliação de horários nos bairros mais afastados e integração tarifária. O evento será aberto à participação de moradores e estudantes.",
+    rotulo: "Como Participar",
+    detalhe: "A audiência ocorrerá no Plenário Principal, às 14h, com transmissão ao vivo e intérprete de Libras. Representantes de associações de moradores e grêmios estudantis poderão se inscrever previamente na Secretaria Legislativa para uso da palavra na Tribuna Livre.",
+    iso: "2026-09-10",
+    data: "10/09/2026",
+    cat: "Mobilidade Urbana"
+    },
+    {
+    id: "posto-de-saude",
+    titulo: "Vereadores acompanham de perto as obras do novo posto de saúde",
+    resumo: "Membros da comissão de saúde realizaram visita técnica às obras da Unidade Básica de Saúde do bairro Jardim das Flores, prevista para inauguração em novembro, verificando o andamento das instalações elétricas e salas de atendimento odontológico.",
+    rotulo: "Relatório da Fiscalização",
+    detalhe: "Durante a vistoria, os parlamentares conferiram o cronograma físico-financeiro da obra, que já atingiu 80% de conclusão. A nova unidade contará com sala de vacinação climatizada, farmácia básica, três consultórios médicos e rampas de acessibilidade.",
+    iso: "2026-09-05",
+    data: "05/09/2026",
+    cat: "Saúde Pública"
+    },
+    {
+    id: "inclusao-digital",
+    titulo: "Aprovado programa de inclusão digital e robótica nas escolas municipais",
+    resumo: "Em votação plenária, o Legislativo aprovou o projeto que destina recursos para a modernização dos laboratórios de informática da rede municipal de ensino, garantindo novos computadores, acesso à internet de alta velocidade e oficinas de programação no contraturno escolar.",
+    rotulo: "Impacto Educacional",
+    detalhe: "O programa atenderá inicialmente doze escolas da zona urbana e rural, beneficiando mais de dois mil alunos do ensino fundamental com kits de robótica educacional, capacitação de professores e torneios estudantis de inovação tecnológica.",
+    iso: "2026-08-29",
+    data: "29/08/2026",
+    cat: "Educação e Tecnologia"
+    },
+    {
+    id: "sistema-digital",
+    titulo: "Câmara lança sistema digital de consulta a atas e projetos de lei",
+    resumo: "Como parte do plano de modernização e transparência ativa, a Presidência da Câmara apresentou o novo acervo digitalizado do Arquivo Público Legislativo, permitindo que qualquer cidadão consulte leis municipais e históricos de votações pela internet.",
+    rotulo: "Transparência Ativa",
+    detalhe: "Foram digitalizados mais de cinco mil documentos históricos, incluindo a Lei Orgânica Municipal atualizada, regimento interno, pareceres das comissões permanentes e pautas das sessões ordinárias e extraordinárias em formato aberto.",
+    iso: "2026-08-22",
+    data: "22/08/2026",
+    cat: "Transparência e Inovação"
+    },
+    {
+    id: "arborizacao",
+    titulo: "Campanha de arborização urbana e coleta seletiva recebe apoio do Legislativo",
+    resumo: "Vereadores aprovaram indicação conjunta solicitando ao Executivo o plantio de duas mil mudas de árvores nativas em vias públicas e a instalação de ecopontos para recolhimento de materiais recicláveis em cinco bairros da cidade.",
+    rotulo: "Sustentabilidade no Município",
+    detalhe: "Além do plantio de espécies adequadas ao sombreamento de calçadas e praças, a iniciativa prevê parceria com cooperativas de catadores locais e ações educativas nas escolas sobre descarte correto de resíduos sólidos.",
+    iso: "2026-08-14",
+    data: "14/08/2026",
+    cat: "Meio Ambiente"
+    }
+];
+
 const campoBuscaVereador = document.querySelector("#busca-vereador");
 const seletorPartido = document.querySelector("#filtro-partido");
 const btnLimparVereadores = document.querySelector("#btn-limpar-vereadores");
@@ -313,6 +376,7 @@ function renderizarDetalhesVereador(dados) {
   painelVereador.appendChild(infoGabinete);
   painelVereador.appendChild(subtituloProjetos);
   painelVereador.appendChild(listaProjetos);
+
   painelVereador.classList.remove("oculto");
 }
 
@@ -499,26 +563,6 @@ if (campoBuscaNoticia) {
 
 if (seletorSessao) {
   seletorSessao.addEventListener("change", filtrarTabelaSessoes);
-}
-
-if (listaNoticias) {
-  listaNoticias.addEventListener("click", (event) => {
-    const botaoLer = event.target.closest(".btn-ler-noticia");
-    if (!botaoLer) return;
-
-    const itemNoticia = botaoLer.closest("li");
-    if (!itemNoticia) return;
-
-    const blocoDetalhe = itemNoticia.querySelector(".detalhe-noticia");
-    if (!blocoDetalhe) return;
-
-    blocoDetalhe.classList.toggle("oculto");
-    const oculto = blocoDetalhe.classList.contains("oculto");
-    botaoLer.textContent = oculto ? "Ler notícia completa" : "Ocultar detalhes";
-
-    const abertas = listaNoticias.querySelectorAll(".detalhe-noticia:not(.oculto)").length;
-    salvarSessao("noticiasMarcadas", abertas);
-  });
 }
 
 if (menuSidebar) {
@@ -759,3 +803,86 @@ if (listaProtocolos) {
 }
 
 document.addEventListener("DOMContentLoaded", inicializarCookiesOuvidoria);
+
+function lerParametroId() {
+  const parametros = new URLSearchParams(window.location.search);
+  return parametros.get("id");
+}
+
+function criarElemento(tag, texto = "", classe = "") {
+  const elemento = document.createElement(tag);
+  if (texto) elemento.textContent = texto;
+  if (classe) elemento.className = classe;
+  return elemento;
+}
+
+function criarLinkVoltar(texto, destino) {
+  const link = criarElemento("a", texto, "link-voltar");
+  link.href = destino;
+  return link;
+}
+
+function renderizarPaginaNoticia() {
+  const alvo = document.querySelector("#conteudo-noticia");
+  if (!alvo) return;
+
+  const id = lerParametroId();
+  const noticia = dadosNoticias.find((item) => item.id === id);
+  alvo.textContent = "";
+
+  if (!noticia) {
+    document.title = "Notícia não encontrada - Câmara Municipal de Buriti do Codô";
+    alvo.appendChild(criarLinkVoltar("← Voltar para as notícias", "index.html#noticias"));
+    alvo.appendChild(criarElemento("h2", "Notícia não encontrada"));
+    alvo.appendChild(criarElemento("p", "A notícia solicitada não existe ou foi removida."));
+    return;
+  }
+
+  document.title = `${noticia.titulo} - Câmara Municipal de Buriti do Codô`;
+
+  const artigo = criarElemento("article", "", "pagina-noticia");
+  artigo.appendChild(criarLinkVoltar("← Voltar para as notícias", "index.html#noticias"));
+  artigo.appendChild(criarElemento("p", noticia.cat, "categoria-noticia"));
+  artigo.appendChild(criarElemento("h2", noticia.titulo));
+
+  const paragrafoData = criarElemento("p", "", "data-noticia");
+  const tempo = criarElemento("time", noticia.data);
+  tempo.setAttribute("datetime", noticia.iso);
+  paragrafoData.appendChild(tempo);
+  artigo.appendChild(paragrafoData);
+
+  artigo.appendChild(criarElemento("p", noticia.resumo, "resumo-noticia"));
+  artigo.appendChild(criarElemento("h3", noticia.rotulo));
+  artigo.appendChild(criarElemento("p", noticia.detalhe));
+  alvo.appendChild(artigo);
+
+  const outras = criarElemento("section", "", "outras-noticias");
+  outras.appendChild(criarElemento("h2", "Outras notícias"));
+  const lista = criarElemento("ul", "", "lista-noticias");
+
+  let exibidas = 0;
+  for (const outra of dadosNoticias) {
+    if (outra.id === noticia.id || exibidas >= 3) continue;
+    const item = document.createElement("li");
+    const titulo = document.createElement("h3");
+    const link = criarElemento("a", outra.titulo);
+    link.href = `noticia.html?id=${outra.id}`;
+    titulo.appendChild(link);
+    item.appendChild(titulo);
+
+    const dataOutra = criarElemento("p", "", "data-noticia");
+    const tempoOutra = criarElemento("time", outra.data);
+    tempoOutra.setAttribute("datetime", outra.iso);
+    dataOutra.appendChild(tempoOutra);
+    dataOutra.appendChild(document.createTextNode(` — ${outra.cat}`));
+    item.appendChild(dataOutra);
+
+    lista.appendChild(item);
+    exibidas++;
+  }
+
+  outras.appendChild(lista);
+  alvo.appendChild(outras);
+}
+
+renderizarPaginaNoticia();
