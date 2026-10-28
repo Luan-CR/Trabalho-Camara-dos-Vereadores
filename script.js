@@ -149,6 +149,8 @@ document.addEventListener("DOMContentLoaded", inicializarPreferencias);
 const dadosVereadores = [
   {
     nome: "Luan Cristian",
+    id: "luan-cristian",
+    foto: "Imagens/vereadorLuan.jpeg",
     partido: "SI",
     cargo: "Presidente da Câmara",
     mandato: "2025 - 2028 (2º Mandato)",
@@ -163,6 +165,8 @@ const dadosVereadores = [
   },
   {
     nome: "Gustavo Antonio",
+    id: "gustavo-antonio",
+    foto: "Imagens/vereadorGustavo.jpeg",
     partido: "TI",
     cargo: "Vice-presidente",
     mandato: "2025 - 2028 (1º Mandato)",
@@ -177,6 +181,8 @@ const dadosVereadores = [
   },
   {
     nome: "Rian Leal",
+    id: "rian-leal",
+    foto: "Imagens/vereadorRian.jpeg",
     partido: "HTML",
     cargo: "1º Secretário",
     mandato: "2025 - 2028 (1º Mandato)",
@@ -191,6 +197,8 @@ const dadosVereadores = [
   },
   {
     nome: "Nilson Bruno",
+    id: "nilson-bruno",
+    foto: "Imagens/vereadorNilson.jpeg",
     partido: "CSS",
     cargo: "2º Secretário",
     mandato: "2025 - 2028 (1º Mandato)",
@@ -376,6 +384,12 @@ function renderizarDetalhesVereador(dados) {
   painelVereador.appendChild(infoGabinete);
   painelVereador.appendChild(subtituloProjetos);
   painelVereador.appendChild(listaProjetos);
+
+  const linkPagina = document.createElement("a");
+  linkPagina.href = `vereador.html?id=${dados.id}`;
+  linkPagina.classList.add("btn-link");
+  linkPagina.textContent = `Ver página completa de ${dados.nome}`;
+  painelVereador.appendChild(linkPagina);
 
   painelVereador.classList.remove("oculto");
 }
@@ -822,6 +836,23 @@ function criarLinkVoltar(texto, destino) {
   return link;
 }
 
+function criarBlocoInfo(titulo) {
+  const bloco = criarElemento("div", "", "info-contato");
+  bloco.appendChild(criarElemento("h3", titulo));
+  return bloco;
+}
+
+function criarLinhaDado(rotulo, valor) {
+  const paragrafo = document.createElement("p");
+  paragrafo.appendChild(criarElemento("strong", `${rotulo}: `));
+  if (valor instanceof Node) {
+    paragrafo.appendChild(valor);
+  } else {
+    paragrafo.appendChild(document.createTextNode(valor));
+  }
+  return paragrafo;
+}
+
 function renderizarPaginaNoticia() {
   const alvo = document.querySelector("#conteudo-noticia");
   if (!alvo) return;
@@ -885,4 +916,92 @@ function renderizarPaginaNoticia() {
   alvo.appendChild(outras);
 }
 
+function renderizarPaginaVereador() {
+  const alvo = document.querySelector("#conteudo-vereador");
+  if (!alvo) return;
+
+  const id = lerParametroId();
+  const vereador = dadosVereadores.find((item) => item.id === id);
+  alvo.textContent = "";
+
+  if (!vereador) {
+    document.title = "Vereador não encontrado - Câmara Municipal de Buriti do Codô";
+    alvo.appendChild(criarLinkVoltar("← Voltar para os vereadores", "index.html#vereadores"));
+    alvo.appendChild(criarElemento("h2", "Vereador não encontrado"));
+    alvo.appendChild(criarElemento("p", "O parlamentar solicitado não existe ou não faz parte da legislatura atual."));
+    return;
+  }
+
+  document.title = `${vereador.nome} - Vereador - Câmara Municipal de Buriti do Codô`;
+
+  const secao = criarElemento("section", "", "pagina-vereador");
+  secao.appendChild(criarLinkVoltar("← Voltar para os vereadores", "index.html#vereadores"));
+  secao.appendChild(criarElemento("h2", vereador.nome));
+
+  const perfil = criarElemento("div", "", "perfil-vereador");
+  const foto = criarElemento("img", "", "perfil-foto");
+  foto.src = vereador.foto;
+  foto.alt = `Foto do vereador ${vereador.nome}`;
+  perfil.appendChild(foto);
+
+  const info = criarElemento("div", "", "perfil-info");
+  info.appendChild(criarElemento("p", `${vereador.cargo} — Partido ${vereador.partido}`, "perfil-cargo"));
+
+  const partesGabinete = vereador.gabinete.split(" | ");
+  const dados = criarBlocoInfo("Dados do parlamentar");
+  dados.appendChild(criarLinhaDado("Partido", vereador.partido));
+  dados.appendChild(criarLinhaDado("Mandato", vereador.mandato));
+  dados.appendChild(criarLinhaDado("Comissão", vereador.comissao));
+  dados.appendChild(criarLinhaDado("Gabinete", partesGabinete[0]));
+  if (partesGabinete[1]) {
+    const linkEmail = criarElemento("a", partesGabinete[1]);
+    linkEmail.href = `mailto:${partesGabinete[1]}`;
+    dados.appendChild(criarLinhaDado("E-mail", linkEmail));
+  }
+  info.appendChild(dados);
+  perfil.appendChild(info);
+  secao.appendChild(perfil);
+
+  const blocoBio = criarBlocoInfo("Biografia");
+  blocoBio.appendChild(criarElemento("p", vereador.biografia));
+  secao.appendChild(blocoBio);
+
+  const blocoProjetos = criarBlocoInfo("Principais Projetos de Lei e Iniciativas");
+  const listaProjetos = criarElemento("ul", "", "lista-projetos");
+  for (const projeto of vereador.projetos) {
+    listaProjetos.appendChild(criarElemento("li", projeto));
+  }
+  blocoProjetos.appendChild(listaProjetos);
+  secao.appendChild(blocoProjetos);
+  alvo.appendChild(secao);
+
+  const outros = criarElemento("section", "", "outros-vereadores");
+  outros.appendChild(criarElemento("h2", "Outros vereadores"));
+  const grade = criarElemento("div", "", "lista-vereadores");
+
+  for (const outro of dadosVereadores) {
+    if (outro.id === vereador.id) continue;
+    const cartao = criarElemento("article", "", "card-vereador");
+
+    const fotoOutro = criarElemento("img", "", "foto-perfil");
+    fotoOutro.src = outro.foto;
+    fotoOutro.alt = `Foto do vereador ${outro.nome}`;
+    cartao.appendChild(fotoOutro);
+
+    cartao.appendChild(criarElemento("h3", outro.nome));
+    cartao.appendChild(criarLinhaDado("Partido", outro.partido));
+    cartao.appendChild(criarElemento("p", outro.cargo, "cargo-vereador"));
+
+    const linkPaginaOutro = criarElemento("a", "Ver página", "btn-link btn-pagina");
+    linkPaginaOutro.href = `vereador.html?id=${outro.id}`;
+    cartao.appendChild(linkPaginaOutro);
+
+    grade.appendChild(cartao);
+  }
+
+  outros.appendChild(grade);
+  alvo.appendChild(outros);
+}
+
 renderizarPaginaNoticia();
+renderizarPaginaVereador();
