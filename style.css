@@ -731,4 +731,48 @@ body.tema-escuro .item-protocolo {
   th, td {
     padding: 8px 6px;
   }
+
+
+
+  .btn-link {
+  display: inline-block;
+  background-color: var(--cor-principal);
+  color: #ffffff;
+  padding: 6px 14px;
+  margin-top: 10px;
+  border-radius: 5px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+  transition: background-color 0.2s;
+}
+
+.btn-link:hover,
+.btn-link:focus {
+  background-color: var(--cor-terciaria);
+}
+
+.card-vereador .btn-pagina {
+  display: block;
+  width: 100%;
+  margin-top: 8px;
+  padding: 8px 12px;
+  background-color: var(--cor-secudaria);
+}
+
+.card-vereador .btn-pagina:hover,
+.card-vereador .btn-pagina:focus {
+  background-color: var(--cor-terciaria);
+}
+
+.lista-noticias h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.lista-noticias h3 a:hover,
+.lista-noticias h3 a:focus {
+  text-decoration: underline;
+}
 }

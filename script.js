@@ -388,7 +388,7 @@ function mostrarSecao(idSecao) {
   }
 
   if (menuSidebar) {
-    const links = menuSidebar.querySelectorAll("a");
+    const links = menuSidebar.querySelectorAll('a[href^="#"]');
     for (const link of links) {
       if (link.getAttribute("href") === `#${idSecao}`) {
         link.classList.add("link-ativo");
@@ -399,15 +399,42 @@ function mostrarSecao(idSecao) {
   }
 }
 
+function secaoExiste(idSecao) {
+  if (idSecao === "todas") return true;
+  for (const secao of secoesPagina) {
+    if (secao.id === idSecao) return true;
+  }
+  return false;
+}
+
 function inicializarSessao() {
-  const secaoSalva = obterSessao("secaoAtiva", "todas");
-  salvarSessao("secaoAtiva", secaoSalva);
+  const ehPaginaInterna = corpoPagina.dataset.pagina === "interna";
+  let secaoSalva = obterSessao("secaoAtiva", "todas");
+
+  if (!ehPaginaInterna) {
+    const hashAtual = window.location.hash.replace("#", "");
+
+    if (hashAtual && secaoExiste(hashAtual)) {
+      secaoSalva = hashAtual;
+      try {
+        history.replaceState(null, "", window.location.href.split("#")[0]);
+      } catch (erro) {
+        // Se o navegador bloquear, a seção continua sendo exibida normalmente.
+      }
+    } else if (!secaoExiste(secaoSalva)) {
+      secaoSalva = "todas";
+    }
+
+    salvarSessao("secaoAtiva", secaoSalva);
+  }
   salvarSessao("termoBuscaNoticia", obterSessao("termoBuscaNoticia", ""));
   salvarSessao("filtroTipoSessao", obterSessao("filtroTipoSessao", "todas"));
   salvarSessao("noticiasMarcadas", obterSessao("noticiasMarcadas", "0"));
   salvarSessao("cliquesSessao", obterSessao("cliquesSessao", "0"));
 
-  mostrarSecao(secaoSalva);
+  if (!ehPaginaInterna) {
+    mostrarSecao(secaoSalva);
+  }
 
   if (campoBuscaNoticia) {
     campoBuscaNoticia.value = obterSessao("termoBuscaNoticia", "");
@@ -499,8 +526,12 @@ if (menuSidebar) {
     const linkClicado = event.target.closest("a");
     if (!linkClicado) return;
 
+    const destino = linkClicado.getAttribute("href");
+    const ehSecaoDestaPagina = destino.startsWith("#") && secaoExiste(destino.replace("#", ""));
+    if (!ehSecaoDestaPagina) return;
+
     event.preventDefault();
-    const idDestino = linkClicado.getAttribute("href").replace("#", "");
+    const idDestino = destino.replace("#", "");
     mostrarSecao(idDestino);
 
     const cliques = Number(obterSessao("cliquesSessao", "0")) + 1;
