@@ -776,3 +776,96 @@ body.tema-escuro .item-protocolo {
   text-decoration: underline;
 }
 }
+
+.link-voltar {
+  display: inline-block;
+  margin-bottom: 15px;
+  color: var(--cor-secudaria);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.link-voltar:hover,
+.link-voltar:focus {
+  text-decoration: underline;
+}
+
+body.tema-escuro .link-voltar,
+body.tema-escuro .info-contato a {
+  color: var(--cor-terciaria);
+}
+
+.pagina-noticia p,
+.pagina-vereador p {
+  margin-bottom: 12px;
+}
+
+.pagina-noticia h3 {
+  color: var(--cor-principal);
+  margin: 20px 0 8px 0;
+}
+
+.categoria-noticia {
+  display: inline-block;
+  background-color: var(--cor-terciaria);
+  color: #222222;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 2px 10px;
+  border-radius: 3px;
+  margin-bottom: 8px !important;
+}
+
+.resumo-noticia {
+  font-size: 1.15rem;
+  margin: 18px 0 !important;
+}
+
+.outras-noticias,
+.outros-vereadores {
+  margin-top: 40px;
+}
+
+.perfil-vereador {
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.perfil-foto {
+  width: 260px;
+  max-width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border: 4px solid var(--cor-principal);
+  border-radius: 5px;
+}
+
+.perfil-info {
+  flex: 1;
+  min-width: 260px;
+}
+
+.perfil-cargo {
+  color: var(--cor-principal);
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.lista-projetos {
+  margin-left: 20px;
+}
+
+.lista-projetos li {
+  margin-bottom: 8px;
+}
+
+@media (max-width: 600px) {
+  .perfil-foto {
+    width: 100%;
+    max-width: 320px;
+  }
+}
