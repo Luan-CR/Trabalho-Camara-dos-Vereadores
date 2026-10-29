@@ -53,3 +53,29 @@ Novas funcionalidades e refinamentos implementados pela equipe:
 - Adição do botão "Limpar campos" no formulário da Ouvidoria para redefinir os campos de entrada, o contador de caracteres e o aviso de confirmação.
 - Inclusão de contador dinâmico do total de mensagens registradas no painel "Mensagens Enviadas", sincronizado ao adicionar ou excluir manifestações.
 - Atualização do arquivo CHANGELOG.txt documentando a evolução da Entrega Parcial 2.
+
+------------------------------------------------------------------------
+
+CHANGELOG - TRABALHO 02 (ENTREGA FINAL - 28/10/2026)
+
+Implementação das páginas internas dinâmicas, roteamento por parâmetros de URL e identidade visual:
+
+1. Links de Notícias, Estrutura da Página de Leitura e Botões de Navegação (Rian Leal - Commits 1 e 2):
+- Transformação dos títulos das matérias no mural de notícias do index.html em links clicáveis e adição dos botões "Ler mais" apontando para noticia.html?id=... com o identificador de cada notícia.
+- Criação do arquivo noticia.html como página interna coringa (data-pagina="interna") com cabeçalho institucional, painel de configurações de acessibilidade, barra lateral de navegação e contêiner principal (#conteudo-noticia).
+- Estilização dos botões de link (.btn-link, .btn-pagina) e dos títulos de notícias com links (.lista-noticias h3 a) no style.css.
+
+2. Página Dinâmica de Leitura de Notícias e Navegação por Hash (Luan Cristian - Commit 4):
+- Modelagem do array de objetos dadosNoticias no script.js contendo id, título, resumo, rótulo, detalhe técnico, data ISO, data formatada e categoria das 6 matérias legislativas.
+- Implementação das funções utilitárias lerParametroId() (com URLSearchParams), criarElemento() e criarLinkVoltar(), além da função renderizarPaginaNoticia() para construir dinamicamente no DOM a matéria completa e a seção "Outras notícias" (com tratamento para IDs inexistentes).
+- Aprimoramento da navegação na barra lateral (secaoExiste e leitura de window.location.hash com history.replaceState) para permitir o retorno direto das páginas internas para qualquer seção do index.html.
+
+3. Página Dedicada de Perfil Parlamentar e Integração do Catálogo de Vereadores (Nilson Bruno - Commit 5):
+- Criação do arquivo vereador.html como página interna coringa (#conteudo-vereador) e adição do botão "Ver página" nos cartões de vereadores do index.html e no painel de detalhes rápido.
+- Ampliação do array dadosVereadores com as propriedades id e foto para cada parlamentar da Câmara.
+- Implementação das funções construtoras criarBlocoInfo(), criarLinhaDado() (com verificação instanceof Node) e renderizarPaginaVereador() para montar dinamicamente o perfil completo do vereador (foto oficial, dados de gabinete com link de e-mail, biografia, projetos de lei) e a grade "Outros vereadores".
+
+4. Estilização das Páginas Internas e Identidade Visual do Portal (Gustavo Antonio - Commit 3):
+- Implementação no style.css dos estilos dedicados às páginas internas de notícia e de vereador (.link-voltar, .pagina-noticia, .pagina-vereador, .categoria-noticia, .resumo-noticia, .outras-noticias e .outros-vereadores), com suporte completo ao Modo Escuro (body.tema-escuro).
+- Estruturação do layout responsivo do perfil parlamentar (.perfil-vereador, .perfil-foto com aspect-ratio: 3 / 4, .perfil-info, .perfil-cargo e .lista-projetos) e media queries para telas móveis.
+- Atualização da paleta de cores institucional (:root) e inclusão do brasão municipal (#BuritiLogo) e imagem panorâmica no cabeçalho das páginas.
