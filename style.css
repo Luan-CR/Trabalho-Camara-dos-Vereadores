@@ -731,10 +731,10 @@ body.tema-escuro .item-protocolo {
   th, td {
     padding: 8px 6px;
   }
+}
 
 
-
-  .btn-link {
+.btn-link {
   display: inline-block;
   background-color: var(--cor-principal);
   color: #ffffff;
@@ -774,7 +774,6 @@ body.tema-escuro .item-protocolo {
 .lista-noticias h3 a:hover,
 .lista-noticias h3 a:focus {
   text-decoration: underline;
-}
 }
 
 .link-voltar {

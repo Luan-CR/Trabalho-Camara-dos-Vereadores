@@ -497,7 +497,6 @@ function inicializarSessao() {
       try {
         history.replaceState(null, "", window.location.href.split("#")[0]);
       } catch (erro) {
-        // Se o navegador bloquear, a seção continua sendo exibida normalmente.
       }
     } else if (!secaoExiste(secaoSalva)) {
       secaoSalva = "todas";
