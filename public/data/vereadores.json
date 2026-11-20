@@ -1,0 +1,66 @@
+[
+  {
+    "nome": "Luan Cristian",
+    "id": "luan-cristian",
+    "foto": "/Imagens/vereadorLuan.jpeg",
+    "partido": "SI",
+    "cargo": "Presidente da Câmara",
+    "mandato": "2025 - 2028 (2º Mandato)",
+    "comissao": "Comissão de Constituição, Justiça e Transformação Digital",
+    "gabinete": "Sala 101 - Anexo Legislativo | luan.cristian@camaraburitidocodo.leg.br",
+    "biografia": "Bacharel em Sistemas de Informação, atua na modernização administrativa do Poder Legislativo e na ampliação do acesso digital aos serviços públicos municipais, defendendo a transparência ativa das contas públicas.",
+    "projetos": [
+      "PL nº 012/2026 - Programa de Digitalização Integral do Arquivo Público e Atas Legislativas.",
+      "PL nº 027/2026 - Implantação de pontos de internet gratuita (Wi-Fi Livre) nas praças e mercados municipais.",
+      "PL nº 041/2026 - Criação do Painel Cidadão para acompanhamento de obras em tempo real."
+    ]
+  },
+  {
+    "nome": "Gustavo Antonio",
+    "id": "gustavo-antonio",
+    "foto": "/Imagens/vereadorGustavo.jpeg",
+    "partido": "TI",
+    "cargo": "Vice-presidente",
+    "mandato": "2025 - 2028 (1º Mandato)",
+    "comissao": "Comissão de Educação, Ciência, Tecnologia e Juventude",
+    "gabinete": "Sala 102 - Anexo Legislativo | gustavo.antonio@camaraburitidocodo.leg.br",
+    "biografia": "Focado no fortalecimento da educação básica e tecnológica no município, trabalha pela inclusão digital nas escolas da rede pública e pelo apoio ao transporte de estudantes universitários e técnicos.",
+    "projetos": [
+      "PL nº 008/2026 - Modernização dos Laboratórios de Informática e Robótica nas escolas municipais.",
+      "PL nº 019/2026 - Programa Bolsa e Transporte Universitário para estudantes de baixa renda.",
+      "PL nº 035/2026 - Criação de cursos profissionalizantes gratuitos em parceria com instituições de ensino."
+    ]
+  },
+  {
+    "nome": "Rian Leal",
+    "id": "rian-leal",
+    "foto": "/Imagens/vereadorRian.jpeg",
+    "partido": "HTML",
+    "cargo": "1º Secretário",
+    "mandato": "2025 - 2028 (1º Mandato)",
+    "comissao": "Comissão de Direitos Humanos, Acessibilidade e Cultura",
+    "gabinete": "Sala 103 - Anexo Legislativo | rian.leal@camaraburitidocodo.leg.br",
+    "biografia": "Defensor da acessibilidade arquitetônica e digital nos órgãos públicos, coordena a secretaria legislativa garantindo que todas as publicações, editais e sessões sejam acessíveis a toda a população.",
+    "projetos": [
+      "PL nº 014/2026 - Adequação de calçadas, rampas e prédios públicos às normas de acessibilidade.",
+      "PL nº 023/2026 - Revitalização e ampliação do acervo da Biblioteca Pública Municipal.",
+      "PL nº 039/2026 - Obrigatoriedade de intérprete de Libras nas sessões solenes e audiências públicas."
+    ]
+  },
+  {
+    "nome": "Nilson Bruno",
+    "id": "nilson-bruno",
+    "foto": "/Imagens/vereadorNilson.jpeg",
+    "partido": "CSS",
+    "cargo": "2º Secretário",
+    "mandato": "2025 - 2028 (1º Mandato)",
+    "comissao": "Comissão de Urbanismo, Meio Ambiente e Infraestrutura",
+    "gabinete": "Sala 104 - Anexo Legislativo | nilson.bruno@camaraburitidocodo.leg.br",
+    "biografia": "Atua diretamente na fiscalização de obras de infraestrutura urbana, iluminação pública e preservação de espaços de convivência, buscando bairros mais seguros, arborizados e bem planejados.",
+    "projetos": [
+      "PL nº 005/2026 - Plano de Revitalização Paisagística e Visual dos parques e praças dos bairros.",
+      "PL nº 021/2026 - Substituição gradual da iluminação pública convencional por lâmpadas de LED.",
+      "PL nº 044/2026 - Programa de incentivo à arborização urbana e coleta seletiva solidária."
+    ]
+  }
+]

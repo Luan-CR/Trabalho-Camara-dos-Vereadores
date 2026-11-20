@@ -1,0 +1,91 @@
+{
+  "sobre": {
+    "paragrafos": [
+      "A Câmara Municipal de Buriti do Codô é o órgão do Poder Legislativo local, onde os representantes eleitos pela população discutem, votam e fiscalizam questões essenciais para o desenvolvimento do município. Por meio das sessões plenárias, audiências públicas e projetos de lei, os vereadores participam diretamente das decisões que impactam o dia a dia da cidade.",
+      "Comprometida com a transparência pública e a participação cidadã, a Casa Legislativa disponibiliza neste portal informações atualizadas sobre seus parlamentares, pautas de votações, notícias institucionais e canais diretos de atendimento ao cidadão."
+    ],
+    "funcoes": [
+      {
+        "id": "legislativa",
+        "titulo": "Função Legislativa",
+        "descricao": "Elaboração, análise e votação de projetos de lei, emendas à Lei Orgânica, decretos legislativos e resoluções que regulamentam a vida no município."
+      },
+      {
+        "id": "fiscalizadora",
+        "titulo": "Função Fiscalizadora",
+        "descricao": "Acompanhamento rigoroso da aplicação dos recursos públicos, execução do orçamento municipal e fiscalização das obras e serviços prestados pela Prefeitura."
+      },
+      {
+        "id": "participacao",
+        "titulo": "Participação Popular",
+        "descricao": "Abertura permanente ao diálogo com a sociedade por meio de audiências públicas, Tribuna Livre e atendimento direto nos gabinetes parlamentares."
+      }
+    ],
+    "comissoes": [
+      {
+        "nome": "Comissão de Constituição, Justiça e Transformação Digital",
+        "descricao": "Avalia a legalidade dos projetos e promove a modernização dos serviços públicos."
+      },
+      {
+        "nome": "Comissão de Finanças, Orçamento e Fiscalização",
+        "descricao": "Analisa a Lei de Diretrizes Orçamentárias (LDO), a Lei Orçamentária Anual (LOA) e a prestação de contas."
+      },
+      {
+        "nome": "Comissão de Educação, Saúde e Assistência Social",
+        "descricao": "Acompanha as políticas públicas voltadas ao ensino municipal, postos de saúde e programas sociais."
+      },
+      {
+        "nome": "Comissão de Urbanismo, Meio Ambiente e Infraestrutura",
+        "descricao": "Fiscaliza obras públicas, mobilidade urbana, iluminação e preservação ambiental."
+      }
+    ],
+    "mesaDiretora": "A Mesa Diretora é responsável pela direção dos trabalhos legislativos e pelos serviços administrativos da Câmara. Composta pelo Presidente, Vice-Presidente, 1º Secretário e 2º Secretário, ela coordena a pauta das sessões plenárias, promulga resoluções e assegura o regular funcionamento da Casa."
+  },
+  "contato": {
+    "sede": {
+      "endereco": "Rua Principal, 123, Centro, Buriti do Codô - MA, CEP 65400-000",
+      "telefone": "(86) 3215-0000",
+      "email": "contato@camaraburitidocodo.leg.br",
+      "horario": "Segunda a sexta-feira, das 8h às 14h (Sessões plenárias às quintas-feiras, a partir das 9h)"
+    },
+    "setores": [
+      {
+        "id": "secretaria",
+        "titulo": "Secretaria Legislativa",
+        "descricao": "Responsável pelo protocolo de projetos de lei, requerimentos, atas das sessões e certidões oficiais.",
+        "ramal": "101",
+        "email": "secretaria@camaraburitidocodo.leg.br"
+      },
+      {
+        "id": "atendimento",
+        "titulo": "Atendimento ao Cidadão e Gabinetes",
+        "descricao": "Agendamento de reuniões com os vereadores, inscrições para uso da Tribuna Livre e consulta a processos.",
+        "ramal": "102",
+        "email": "atendimento@camaraburitidocodo.leg.br"
+      },
+      {
+        "id": "comunicacao",
+        "titulo": "Comunicação e Transparência",
+        "descricao": "Divulgação institucional, acompanhamento de audiências públicas e pedidos da Lei de Acesso à Informação (LAI).",
+        "ramal": "103",
+        "email": "imprensa@camaraburitidocodo.leg.br"
+      }
+    ]
+  },
+  "ouvidoria": {
+    "etapas": [
+      {
+        "titulo": "1. Registro da Manifestação",
+        "descricao": "Preencha seus dados corretamente, selecione o assunto e descreva sua mensagem com clareza."
+      },
+      {
+        "titulo": "2. Análise pelo Setor Responsável",
+        "descricao": "Ao enviar o formulário, sua mensagem é encaminhada diretamente à secretaria ou comissão competente."
+      },
+      {
+        "titulo": "3. Prazo de Resposta",
+        "descricao": "Em conformidade com a Lei de Acesso à Informação, o prazo máximo de resposta pelo e-mail informado é de até 15 dias úteis."
+      }
+    ]
+  }
+}
