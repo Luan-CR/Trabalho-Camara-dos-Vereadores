@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 :root {
   --cor-principal: #005637;
   --cor-secudaria: #002496;
@@ -16,6 +18,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   color: #222222;
   line-height: 1.6;
+  background-color: #ffffff;
 }
 
 .pular-conteudo {
@@ -35,7 +38,7 @@ body {
 }
 
 header {
-  background-image: url(Imagens/Pedra_Furada_Picos_Piaui_3.JPG);
+  background-image: url('/Imagens/Pedra_Furada_Picos_Piaui_3.JPG');
   background-size: cover;
   background-position: center;
   background-color: var(--cor-principal);
@@ -46,32 +49,33 @@ header {
   min-height: 150px;
 }
 
-#BuritiLogo{
+#BuritiLogo {
   max-width: 100%;
   width: auto;
   height: 150px;
-  padding: 0%;
-  margin: 0%;
+  padding: 0;
+  margin: 0;
 }
 
-.cabecalho-texto{
+.cabecalho-texto {
   background-color: var(--cor-principal);
   max-width: 60%;
-  padding-left: 35px;
-  padding-right: 35px;
+  padding: 10px 35px;
   margin: 0 auto;
+  border-radius: 5px;
 }
 
 .cabecalho-container {
   display: flex;
   flex: 1;
-  justify-content: center;  
+  justify-content: center;
   align-items: center;
   gap: 15px;
 }
 
 header h1 {
   font-size: 1.5rem;
+  font-weight: bold;
 }
 
 header p {
@@ -101,6 +105,10 @@ header p {
   font-size: 0.8rem;
   background-color: transparent;
   border: 1px solid #ffffff;
+  color: #ffffff;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .btn-menu:hover,
@@ -148,7 +156,14 @@ header p {
 .sidebar ul li a:hover,
 .sidebar ul li a:focus {
   background-color: var(--cor-terciaria);
+  color: #222222;
   text-decoration: none;
+}
+
+.sidebar ul li a.link-ativo {
+  background-color: var(--cor-terciaria);
+  color: #222222;
+  border-left: 4px solid #ffffff;
 }
 
 main {
@@ -164,6 +179,8 @@ section {
 
 h2 {
   color: var(--cor-principal);
+  font-size: 1.4rem;
+  font-weight: bold;
   margin-bottom: 15px;
   border-bottom: 2px solid var(--cor-principal);
   padding-bottom: 5px;
@@ -192,12 +209,13 @@ h2 {
 
 .bloco-info.bloco-destaque {
   border-color: var(--cor-principal);
-  box-shadow: 0 4px 10px rgba(139, 105, 20, 0.25);
+  box-shadow: 0 4px 10px rgba(0, 86, 55, 0.25);
 }
 
 .bloco-info h3 {
   color: var(--cor-principal);
   font-size: 1.05rem;
+  font-weight: bold;
   margin-bottom: 8px;
 }
 
@@ -241,6 +259,7 @@ h2 {
 .card-vereador h3 {
   color: var(--cor-principal);
   font-size: 1.05rem;
+  font-weight: bold;
   min-height: 2.5rem;
   display: flex;
   align-items: center;
@@ -270,16 +289,17 @@ h2 {
   color: var(--cor-principal);
   margin-bottom: 5px;
   font-size: 1.1rem;
+  font-weight: bold;
 }
 
-.detalhe-noticia {
-  margin-top: 10px;
-  padding-top: 10px;
-  border-top: 1px solid var(--cinza-borda);
+.lista-noticias h3 a {
+  color: inherit;
+  text-decoration: none;
 }
 
-body.tema-escuro .detalhe-noticia {
-  border-top-color: #555555;
+.lista-noticias h3 a:hover,
+.lista-noticias h3 a:focus {
+  text-decoration: underline;
 }
 
 .data-noticia {
@@ -304,7 +324,8 @@ table {
   border-collapse: collapse;
 }
 
-th, td {
+th,
+td {
   border: 1px solid var(--cinza-borda);
   padding: 10px;
   text-align: left;
@@ -330,6 +351,7 @@ tbody tr:nth-child(even) {
 .info-contato h3 {
   color: var(--cor-principal);
   font-size: 1.05rem;
+  font-weight: bold;
   margin-bottom: 10px;
 }
 
@@ -359,16 +381,21 @@ label {
   font-weight: bold;
 }
 
-input, textarea, select {
+input,
+textarea,
+select {
   width: 100%;
   padding: 8px;
   border: 1px solid #999999;
   border-radius: 3px;
   font-family: inherit;
   font-size: 1rem;
+  background-color: #ffffff;
 }
 
-input:focus, textarea:focus, select:focus {
+input:focus,
+textarea:focus,
+select:focus {
   border-color: var(--cor-principal);
   outline: 2px solid var(--cor-principal);
   outline-offset: 1px;
@@ -390,16 +417,13 @@ button {
 button:hover,
 button:focus {
   background-color: var(--cor-terciaria);
+  color: #222222;
 }
 
 .contador-caracteres {
   margin-top: 6px;
   font-size: 0.85rem;
   color: #555555;
-}
-
-body.tema-escuro .contador-caracteres {
-  color: #cccccc;
 }
 
 .botoes-formulario {
@@ -423,34 +447,6 @@ footer {
   text-align: center;
   padding: 15px;
   font-size: 0.9rem;
-}
-
-.sidebar ul li a.link-ativo {
-  background-color: var(--cor-terciaria);
-  border-left: 4px solid #ffffff;
-}
-
-body.tema-escuro {
-  background-color: #1e1e1e;
-  color: #f0f0f0;
-}
-
-body.tema-escuro .card-vereador,
-body.tema-escuro .lista-noticias li,
-body.tema-escuro .info-contato,
-body.tema-escuro .bloco-info,
-body.tema-escuro tbody tr:nth-child(even) {
-  background-color: #2d2d2d;
-  color: #f0f0f0;
-  border-color: #555555;
-}
-
-body.tema-escuro input,
-body.tema-escuro textarea,
-body.tema-escuro select {
-  background-color: #2d2d2d;
-  color: #ffffff;
-  border-color: #666666;
 }
 
 .config-container {
@@ -481,12 +477,6 @@ body.tema-escuro select {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   z-index: 200;
   text-align: left;
-}
-
-body.tema-escuro .painel-config {
-  background-color: #2d2d2d;
-  color: #f0f0f0;
-  border-color: #555555;
 }
 
 .item-config {
@@ -547,7 +537,7 @@ body.tema-escuro .painel-config {
 
 .card-vereador.card-ativo {
   border: 2px solid var(--cor-principal);
-  box-shadow: 0 4px 12px rgba(139, 105, 20, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 86, 55, 0.3);
 }
 
 .btn-card {
@@ -555,10 +545,6 @@ body.tema-escuro .painel-config {
   padding: 8px 12px;
   font-size: 0.85rem;
   width: 100%;
-}
-
-.noticia-lida {
-  opacity: 0.65;
 }
 
 .painel-detalhes {
@@ -574,6 +560,7 @@ body.tema-escuro .painel-config {
   color: var(--cor-principal);
   margin-bottom: 10px;
   font-size: 1.2rem;
+  font-weight: bold;
 }
 
 .painel-detalhes h4 {
@@ -581,6 +568,7 @@ body.tema-escuro .painel-config {
   margin-top: 15px;
   margin-bottom: 8px;
   font-size: 1rem;
+  font-weight: bold;
 }
 
 .painel-detalhes p {
@@ -590,16 +578,11 @@ body.tema-escuro .painel-config {
 .painel-detalhes ul {
   margin-left: 20px;
   margin-top: 5px;
+  list-style: disc;
 }
 
 .painel-detalhes li {
   margin-bottom: 6px;
-}
-
-body.tema-escuro .painel-detalhes {
-  background-color: #2d2d2d;
-  border-color: #555555;
-  border-left: 5px solid var(--cor-principal);
 }
 
 .oculto {
@@ -639,6 +622,7 @@ body.tema-escuro .painel-detalhes {
   margin-top: 0;
   margin-bottom: 6px;
   font-size: 1.05rem;
+  font-weight: bold;
 }
 
 .conteudo-mensagem p {
@@ -646,16 +630,175 @@ body.tema-escuro .painel-detalhes {
   font-size: 0.95rem;
 }
 
-body.tema-escuro .item-protocolo {
-  background-color: #1e1e1e;
-  border-color: #555555;
-}
-
 .btn-remover-protocolo {
   width: auto;
   padding: 8px 14px;
   font-size: 0.85rem;
   align-self: center;
+}
+
+.btn-link {
+  display: inline-block;
+  background-color: var(--cor-principal);
+  color: #ffffff;
+  padding: 6px 14px;
+  margin-top: 10px;
+  border-radius: 5px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+  transition: background-color 0.2s;
+}
+
+.btn-link:hover,
+.btn-link:focus {
+  background-color: var(--cor-terciaria);
+  color: #222222;
+}
+
+.card-vereador .btn-pagina {
+  display: block;
+  width: 100%;
+  margin-top: 8px;
+  padding: 8px 12px;
+  background-color: var(--cor-secudaria);
+}
+
+.card-vereador .btn-pagina:hover,
+.card-vereador .btn-pagina:focus {
+  background-color: var(--cor-terciaria);
+  color: #222222;
+}
+
+.link-voltar {
+  display: inline-block;
+  margin-bottom: 15px;
+  color: var(--cor-secudaria);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.link-voltar:hover,
+.link-voltar:focus {
+  text-decoration: underline;
+}
+
+.pagina-noticia p,
+.pagina-vereador p {
+  margin-bottom: 12px;
+}
+
+.pagina-noticia h3 {
+  color: var(--cor-principal);
+  font-weight: bold;
+  margin: 20px 0 8px 0;
+}
+
+.categoria-noticia {
+  display: inline-block;
+  background-color: var(--cor-terciaria);
+  color: #222222;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 2px 10px;
+  border-radius: 3px;
+  margin-bottom: 8px !important;
+}
+
+.resumo-noticia {
+  font-size: 1.15rem;
+  margin: 18px 0 !important;
+}
+
+.outras-noticias,
+.outros-vereadores {
+  margin-top: 40px;
+}
+
+.perfil-vereador {
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.perfil-foto {
+  width: 260px;
+  max-width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border: 4px solid var(--cor-principal);
+  border-radius: 5px;
+}
+
+.perfil-info {
+  flex: 1;
+  min-width: 260px;
+}
+
+.perfil-cargo {
+  color: var(--cor-principal);
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.lista-projetos {
+  margin-left: 20px;
+  list-style: disc;
+}
+
+.lista-projetos li {
+  margin-bottom: 8px;
+}
+
+body.tema-escuro {
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+}
+
+body.tema-escuro .card-vereador,
+body.tema-escuro .lista-noticias li,
+body.tema-escuro .info-contato,
+body.tema-escuro .bloco-info,
+body.tema-escuro tbody tr:nth-child(even),
+body.tema-escuro .painel-config,
+body.tema-escuro .painel-detalhes {
+  background-color: #2d2d2d;
+  color: #f0f0f0;
+  border-color: #555555;
+}
+
+body.tema-escuro input,
+body.tema-escuro textarea,
+body.tema-escuro select {
+  background-color: #2d2d2d;
+  color: #ffffff;
+  border-color: #666666;
+}
+
+body.tema-escuro .item-protocolo {
+  background-color: #1e1e1e;
+  border-color: #555555;
+}
+
+body.tema-escuro .contador-caracteres,
+body.tema-escuro .data-noticia {
+  color: #cccccc;
+}
+
+body.tema-escuro .link-voltar,
+body.tema-escuro .info-contato a,
+body.tema-escuro h2,
+body.tema-escuro h3,
+body.tema-escuro h4,
+body.tema-escuro legend,
+body.tema-escuro .contador-resultados,
+body.tema-escuro .mensagem-feedback,
+body.tema-escuro .perfil-cargo {
+  color: var(--cor-terciaria);
 }
 
 @media (max-width: 768px) {
@@ -728,141 +871,11 @@ body.tema-escuro .item-protocolo {
     font-size: 0.85rem;
   }
 
-  th, td {
+  th,
+  td {
     padding: 8px 6px;
   }
-}
 
-
-.btn-link {
-  display: inline-block;
-  background-color: var(--cor-principal);
-  color: #ffffff;
-  padding: 6px 14px;
-  margin-top: 10px;
-  border-radius: 5px;
-  font-size: 0.85rem;
-  font-weight: bold;
-  text-decoration: none;
-  text-align: center;
-  transition: background-color 0.2s;
-}
-
-.btn-link:hover,
-.btn-link:focus {
-  background-color: var(--cor-terciaria);
-}
-
-.card-vereador .btn-pagina {
-  display: block;
-  width: 100%;
-  margin-top: 8px;
-  padding: 8px 12px;
-  background-color: var(--cor-secudaria);
-}
-
-.card-vereador .btn-pagina:hover,
-.card-vereador .btn-pagina:focus {
-  background-color: var(--cor-terciaria);
-}
-
-.lista-noticias h3 a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.lista-noticias h3 a:hover,
-.lista-noticias h3 a:focus {
-  text-decoration: underline;
-}
-
-.link-voltar {
-  display: inline-block;
-  margin-bottom: 15px;
-  color: var(--cor-secudaria);
-  font-weight: bold;
-  text-decoration: none;
-}
-
-.link-voltar:hover,
-.link-voltar:focus {
-  text-decoration: underline;
-}
-
-body.tema-escuro .link-voltar,
-body.tema-escuro .info-contato a {
-  color: var(--cor-terciaria);
-}
-
-.pagina-noticia p,
-.pagina-vereador p {
-  margin-bottom: 12px;
-}
-
-.pagina-noticia h3 {
-  color: var(--cor-principal);
-  margin: 20px 0 8px 0;
-}
-
-.categoria-noticia {
-  display: inline-block;
-  background-color: var(--cor-terciaria);
-  color: #222222;
-  font-size: 0.8rem;
-  font-weight: bold;
-  text-transform: uppercase;
-  padding: 2px 10px;
-  border-radius: 3px;
-  margin-bottom: 8px !important;
-}
-
-.resumo-noticia {
-  font-size: 1.15rem;
-  margin: 18px 0 !important;
-}
-
-.outras-noticias,
-.outros-vereadores {
-  margin-top: 40px;
-}
-
-.perfil-vereador {
-  display: flex;
-  gap: 28px;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
-}
-
-.perfil-foto {
-  width: 260px;
-  max-width: 100%;
-  aspect-ratio: 3 / 4;
-  object-fit: cover;
-  border: 4px solid var(--cor-principal);
-  border-radius: 5px;
-}
-
-.perfil-info {
-  flex: 1;
-  min-width: 260px;
-}
-
-.perfil-cargo {
-  color: var(--cor-principal);
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-
-.lista-projetos {
-  margin-left: 20px;
-}
-
-.lista-projetos li {
-  margin-bottom: 8px;
-}
-
-@media (max-width: 600px) {
   .perfil-foto {
     width: 100%;
     max-width: 320px;
