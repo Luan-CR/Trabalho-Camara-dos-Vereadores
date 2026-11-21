@@ -79,3 +79,27 @@ Implementação das páginas internas dinâmicas, roteamento por parâmetros de 
 - Implementação no style.css dos estilos dedicados às páginas internas de notícia e de vereador (.link-voltar, .pagina-noticia, .pagina-vereador, .categoria-noticia, .resumo-noticia, .outras-noticias e .outros-vereadores), com suporte completo ao Modo Escuro (body.tema-escuro).
 - Estruturação do layout responsivo do perfil parlamentar (.perfil-vereador, .perfil-foto com aspect-ratio: 3 / 4, .perfil-info, .perfil-cargo e .lista-projetos) e media queries para telas móveis.
 - Atualização da paleta de cores institucional (:root) e inclusão do brasão municipal (#BuritiLogo) e imagem panorâmica no cabeçalho das páginas.
+
+-----------------------------------------------------------------------
+
+CHANGELOG - TRABALHO 03 (ENTREGA PARCIAL 1 - 20/11/2026)
+
+Portal da Câmara Municipal de Buriti do Codô — Migração para Arquitetura SPA
+
+1. Configuração das Ferramentas Modernas, Layout React e localStorage (Luan Cristian - Commits 01 e 02):
+- Inicialização da aplicação com o bundler Vite, React 18, Tailwind CSS, ESLint e Prettier, unificando o portal em uma Single-Page Application (SPA) e organizando os ativos em public/Imagens/.
+- Criação do módulo ES6 src/utils/storage.js com persistência das 5 chaves do localStorage (temaEscuro, tamanhoFonte, totalVisitas, ultimoAcesso e ultimoVereadorConsultado).
+- Componentização do cabeçalho (Header.jsx com painel suspenso de Configurações de Acessibilidade, Modo Escuro e ajuste de fonte), barra lateral retrátil (Sidebar.jsx) e rodapé dinâmico (Footer.jsx).
+
+2. Roteamento Client-Side com React Router, sessionStorage e Serviço Fetch API (Nilson Bruno - Commits 03 e 04):
+- Implementação do roteamento client-side com React Router DOM (BrowserRouter, Routes, Route e NavLink), permitindo navegar entre as views sem recarregamento completo da página.
+- Adição das funções de gerenciamento das 5 chaves do sessionStorage (secaoAtiva, termoBuscaNoticia, filtroTipoSessao, noticiasMarcadas e cliquesSessao) em src/utils/storage.js.
+- Criação dos arquivos estáticos public/data/noticias.json e public/data/sessoes.json e do módulo src/services/api.js utilizando a Fetch API com async/await, try/catch, validação de response.ok e AbortController.
+
+3. Bases de Dados JSON de Vereadores e Câmara e Seções Sobre e Contato Assíncronas (Rian Leal - Commits 05 e 06):
+- Criação dos arquivos estáticos public/data/camara.json e public/data/vereadores.json e expansão do serviço src/services/api.js com métodos de busca de parlamentares e dados institucionais via HTTP GET.
+- Implementação dos componentes SobreSection.jsx e ContatoSection.jsx consumindo os dados assincronamente via Fetch API e mantendo o efeito interativo de destaque nos blocos informativos.
+
+4. Módulo de Cookies HTTP e Documentação da Entrega Parcial 1 (Gustavo Antonio - Commits 07 e 08):
+- Implementação das funções de leitura, gravação e inicialização dos 5 cookies HTTP (cidadaoNome, cidadaoEmail, ultimoAssuntoOuvidoria, dataUltimoEnvio e totalManifestacoesEnviadas) com encodeURIComponent, decodeURIComponent e max-age de 7 dias em src/utils/storage.js.
+- Atualização do arquivo CHANGELOG.txt documentando as entregas da Parcial 1 do Trabalho 03.
