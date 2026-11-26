@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header.jsx';
 import Sidebar from './components/Sidebar.jsx';
 import Footer from './components/Footer.jsx';
 import SobreSection from './components/SobreSection.jsx';
 import ContatoSection from './components/ContatoSection.jsx';
+import NoticiaDetalhePage from './pages/NoticiaDetalhePage.jsx';
 import {
   salvarLocal,
   inicializarPreferenciasLocais,
@@ -26,6 +27,7 @@ export default function App() {
   const [totalVisitas, setTotalVisitas] = useState(1);
   const [ultimoAcesso, setUltimoAcesso] = useState('');
   const [ultimoVereadorConsultado, setUltimoVereadorConsultado] = useState('Nenhum');
+  const location = useLocation();
 
   useEffect(() => {
     const prefs = inicializarPreferenciasLocais();
@@ -36,6 +38,16 @@ export default function App() {
     setUltimoVereadorConsultado(prefs.ultimoVereadorConsultado);
     inicializarDadosSessao();
   }, []);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (
+      !location.pathname.startsWith('/noticias/') &&
+      !location.pathname.startsWith('/vereadores/')
+    ) {
+      document.title = 'Câmara Municipal de Buriti do Codô';
+    }
+  }, [location.pathname]);
 
   useEffect(() => {
     if (temaEscuro) {
@@ -74,6 +86,7 @@ export default function App() {
       <a href="#conteudo" className="pular-conteudo">
         Pular para o conteúdo
       </a>
+
       <Header
         temaEscuro={temaEscuro}
         tamanhoFonte={tamanhoFonte}
@@ -81,6 +94,7 @@ export default function App() {
         onAlterarFonte={alterarTamanhoFonte}
         onRestaurarPadrao={restaurarPadrao}
       />
+
       <div className="pagina-container">
         <Sidebar />
         <main id="conteudo">
@@ -103,6 +117,7 @@ export default function App() {
               path="/noticias"
               element={<SecaoEmConstrucao titulo="Notícias" />}
             />
+            <Route path="/noticias/:id" element={<NoticiaDetalhePage />} />
             <Route
               path="/sessoes"
               element={<SecaoEmConstrucao titulo="Últimas Sessões" />}
@@ -110,11 +125,12 @@ export default function App() {
             <Route path="/contato" element={<ContatoSection />} />
             <Route
               path="/ouvidoria"
-              element={<SecaoEmConstrucao titulo="Fale Conosco / Ouvidoria" />}
+              element={<SecaoEmConstrucao titulo="Fale Conosco - Ouvidoria" />}
             />
           </Routes>
         </main>
       </div>
+
       <Footer
         totalVisitas={totalVisitas}
         ultimoAcesso={ultimoAcesso}
