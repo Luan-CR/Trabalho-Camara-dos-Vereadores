@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header.jsx';
 import Sidebar from './components/Sidebar.jsx';
@@ -8,8 +8,10 @@ import ContatoSection from './components/ContatoSection.jsx';
 import NoticiaDetalhePage from './pages/NoticiaDetalhePage.jsx';
 import NoticiasSection from './components/NoticiasSection.jsx';
 import SessoesSection from './components/SessoesSection.jsx';
+import VereadoresSection from './components/VereadoresSection.jsx';
 import {
   salvarLocal,
+  obterLocal,
   inicializarPreferenciasLocais,
   inicializarDadosSessao,
 } from './utils/storage.js';
@@ -83,6 +85,11 @@ export default function App() {
     setTamanhoFonte(16);
   };
 
+  const atualizarUltimoVereador = useCallback((nome) => {
+    salvarLocal('ultimoVereadorConsultado', nome);
+    setUltimoVereadorConsultado(obterLocal('ultimoVereadorConsultado', nome));
+  }, []);
+
   return (
     <div>
       <a href="#conteudo" className="pular-conteudo">
@@ -106,6 +113,9 @@ export default function App() {
               element={
                 <>
                   <SobreSection />
+                  <VereadoresSection
+                    onVereadorConsultado={atualizarUltimoVereador}
+                  />
                   <NoticiasSection />
                   <SessoesSection />
                   <ContatoSection />
@@ -113,10 +123,14 @@ export default function App() {
               }
             />
             <Route path="/sobre" element={<SobreSection />} />
-            <Route
-              path="/vereadores"
-              element={<SecaoEmConstrucao titulo="Vereadores" />}
-            />
+         <Route
+           path="/vereadores"
+           element={
+             <VereadoresSection
+               onVereadorConsultado={atualizarUltimoVereador}
+             />
+           }
+         />
             <Route path="/noticias" element={<NoticiasSection />}/>
             <Route path="/noticias/:id" element={<NoticiaDetalhePage />} />
             <Route path="/sessoes" element={<SessoesSection/>}/>
