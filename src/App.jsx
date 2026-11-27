@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
+import VereadorDetalhePage from './pages/VereadorDetalhePage.jsx';
 import Header from './components/Header.jsx';
 import Sidebar from './components/Sidebar.jsx';
 import Footer from './components/Footer.jsx';
@@ -131,6 +132,14 @@ export default function App() {
              />
            }
          />
+           <Route
+              path="/vereadores/:id"
+              element={
+                <VereadorDetalhePage
+                  onVereadorConsultado={atualizarUltimoVereador}
+                />
+              }
+            />
             <Route path="/noticias" element={<NoticiasSection />}/>
             <Route path="/noticias/:id" element={<NoticiaDetalhePage />} />
             <Route path="/sessoes" element={<SessoesSection/>}/>
