@@ -1,15 +1,17 @@
+
 import { useState, useEffect, useCallback } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
-import VereadorDetalhePage from './pages/VereadorDetalhePage.jsx';
 import Header from './components/Header.jsx';
 import Sidebar from './components/Sidebar.jsx';
 import Footer from './components/Footer.jsx';
 import SobreSection from './components/SobreSection.jsx';
-import ContatoSection from './components/ContatoSection.jsx';
-import NoticiaDetalhePage from './pages/NoticiaDetalhePage.jsx';
+import VereadoresSection from './components/VereadoresSection.jsx';
 import NoticiasSection from './components/NoticiasSection.jsx';
 import SessoesSection from './components/SessoesSection.jsx';
-import VereadoresSection from './components/VereadoresSection.jsx';
+import ContatoSection from './components/ContatoSection.jsx';
+import OuvidoriaSection from './components/OuvidoriaSection.jsx';
+import NoticiaDetalhePage from './pages/NoticiaDetalhePage.jsx';
+import VereadorDetalhePage from './pages/VereadorDetalhePage.jsx';
 import {
   salvarLocal,
   obterLocal,
@@ -17,35 +19,30 @@ import {
   inicializarDadosSessao,
 } from './utils/storage.js';
 
-function SecaoEmConstrucao({ titulo }) {
-  return (
-    <section>
-      <h2>{titulo}</h2>
-      <p>Seção integrada ao roteamento SPA.</p>
-    </section>
-  );
-}
-
 export default function App() {
   const [temaEscuro, setTemaEscuro] = useState(false);
   const [tamanhoFonte, setTamanhoFonte] = useState(16);
   const [totalVisitas, setTotalVisitas] = useState(1);
   const [ultimoAcesso, setUltimoAcesso] = useState('');
   const [ultimoVereadorConsultado, setUltimoVereadorConsultado] = useState('Nenhum');
+
   const location = useLocation();
 
   useEffect(() => {
     const prefs = inicializarPreferenciasLocais();
+
     setTemaEscuro(prefs.temaEscuro);
     setTamanhoFonte(prefs.tamanhoFonte);
     setTotalVisitas(prefs.totalVisitas);
     setUltimoAcesso(prefs.ultimoAcesso);
     setUltimoVereadorConsultado(prefs.ultimoVereadorConsultado);
+
     inicializarDadosSessao();
   }, []);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+
     if (
       !location.pathname.startsWith('/noticias/') &&
       !location.pathname.startsWith('/vereadores/')
@@ -60,6 +57,7 @@ export default function App() {
     } else {
       document.body.classList.remove('tema-escuro');
     }
+
     salvarLocal('temaEscuro', temaEscuro ? 'sim' : 'nao');
   }, [temaEscuro]);
 
@@ -75,8 +73,10 @@ export default function App() {
   const alterarTamanhoFonte = (passo = 2) => {
     setTamanhoFonte((atual) => {
       let novo = atual + passo;
+
       if (novo < 12) novo = 12;
       if (novo > 22) novo = 22;
+
       return novo;
     });
   };
@@ -107,6 +107,7 @@ export default function App() {
 
       <div className="pagina-container">
         <Sidebar />
+
         <main id="conteudo">
           <Routes>
             <Route
@@ -120,19 +121,23 @@ export default function App() {
                   <NoticiasSection />
                   <SessoesSection />
                   <ContatoSection />
+                  <OuvidoriaSection />
                 </>
               }
             />
+
             <Route path="/sobre" element={<SobreSection />} />
-         <Route
-           path="/vereadores"
-           element={
-             <VereadoresSection
-               onVereadorConsultado={atualizarUltimoVereador}
-             />
-           }
-         />
-           <Route
+
+            <Route
+              path="/vereadores"
+              element={
+                <VereadoresSection
+                  onVereadorConsultado={atualizarUltimoVereador}
+                />
+              }
+            />
+
+            <Route
               path="/vereadores/:id"
               element={
                 <VereadorDetalhePage
@@ -140,14 +145,12 @@ export default function App() {
                 />
               }
             />
-            <Route path="/noticias" element={<NoticiasSection />}/>
+
+            <Route path="/noticias" element={<NoticiasSection />} />
             <Route path="/noticias/:id" element={<NoticiaDetalhePage />} />
-            <Route path="/sessoes" element={<SessoesSection/>}/>
+            <Route path="/sessoes" element={<SessoesSection />} />
             <Route path="/contato" element={<ContatoSection />} />
-            <Route
-              path="/ouvidoria"
-              element={<SecaoEmConstrucao titulo="Fale Conosco - Ouvidoria" />}
-            />
+            <Route path="/ouvidoria" element={<OuvidoriaSection />} />
           </Routes>
         </main>
       </div>

@@ -103,3 +103,26 @@ Portal da Câmara Municipal de Buriti do Codô — Migração para Arquitetura S
 4. Módulo de Cookies HTTP e Documentação da Entrega Parcial 1 (Gustavo Antonio - Commits 07 e 08):
 - Implementação das funções de leitura, gravação e inicialização dos 5 cookies HTTP (cidadaoNome, cidadaoEmail, ultimoAssuntoOuvidoria, dataUltimoEnvio e totalManifestacoesEnviadas) com encodeURIComponent, decodeURIComponent e max-age de 7 dias em src/utils/storage.js.
 - Atualização do arquivo CHANGELOG.txt documentando as entregas da Parcial 1 do Trabalho 03.
+
+------------------------------------------------------------------------
+
+CHANGELOG - TRABALHO 03 (ENTREGA PARCIAL 2 - 27/11/2026)
+
+Portal da Câmara Municipal de Buriti do Codô — Views Dinâmicas SPA e Integração Completa
+
+1. View SPA de Leitura de Notícia e Tratamento Visual de Estados HTTP (Luan Cristian - Commits 09 e 10):
+- Criação da página interna SPA NoticiaDetalhePage.jsx para a rota /noticias/:id utilizando useParams e Link do React Router DOM, carregando a matéria assincronamente via Fetch API e incrementando noticiasMarcadas no sessionStorage.
+- Implementação do componente reutilizável StatusCarregamento.jsx para feedback de carregamento e tratamento de erros HTTP, além de sincronização de document.title e rolagem automática entre rotas em App.jsx.
+
+2. Seções Assíncronas de Notícias e Sessões Plenárias Integradas ao sessionStorage (Rian Leal - Commits 11 e 12):
+- Implementação do componente NoticiasSection.jsx consumindo /data/noticias.json via Fetch API, com busca instantânea por palavra-chave preservada em termoBuscaNoticia no sessionStorage e contador dinâmico de resultados.
+- Implementação do componente SessoesSection.jsx consumindo /data/sessoes.json via Fetch API, com tabela semântica, filtro por tipo (Todas, Ordinária e Extraordinária) persistido em filtroTipoSessao e contador dinâmico.
+
+3. Catálogo de Vereadores, Painel Rápido e View SPA de Perfil Parlamentar (Gustavo Antonio - Commits 13 e 14):
+- Implementação do componente VereadoresSection.jsx consumindo /data/vereadores.json via Fetch API, com painel expansível de detalhes rápido e atualização em tempo real de ultimoVereadorConsultado no localStorage e no rodapé.
+- Criação da view SPA VereadorDetalhePage.jsx para a rota /vereadores/:id exibindo foto oficial 3x4, dados do gabinete com link mailto, biografia, projetos de lei e grade "Outros vereadores" sem recarregamento de página.
+
+4. Filtragem Combinada de Vereadores e Ouvidoria Parlamentar com Cookies HTTP (Nilson Bruno - Commits 15 e 16):
+- Adição da busca em tempo real por nome, seletor de partido político (SI, TI, HTML, CSS), contador dinâmico e botão "Limpar filtros" em VereadoresSection.jsx.
+- Implementação do componente OuvidoriaSection.jsx com autopreenchimento via os 5 cookies HTTP, contador de caracteres em tempo real (0 / 300), validação no envio, classificação via switch, confirmação com parâmetros rest, listagem e exclusão individual de protocolos enviados.
+- Atualização do arquivo CHANGELOG.txt documentando a Entrega Parcial 2 do Trabalho 03.
