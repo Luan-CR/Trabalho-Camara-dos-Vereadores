@@ -6,6 +6,7 @@ import Footer from './components/Footer.jsx';
 import SobreSection from './components/SobreSection.jsx';
 import ContatoSection from './components/ContatoSection.jsx';
 import NoticiaDetalhePage from './pages/NoticiaDetalhePage.jsx';
+import NoticiasSection from './components/NoticiasSection.jsx';
 import {
   salvarLocal,
   inicializarPreferenciasLocais,
@@ -104,6 +105,7 @@ export default function App() {
               element={
                 <>
                   <SobreSection />
+                  <NoticiasSection />
                   <ContatoSection />
                 </>
               }
@@ -113,9 +115,7 @@ export default function App() {
               path="/vereadores"
               element={<SecaoEmConstrucao titulo="Vereadores" />}
             />
-            <Route
-              path="/noticias"
-              element={<SecaoEmConstrucao titulo="Notícias" />}
+            <Route path="/noticias" element={<NoticiasSection />}
             />
             <Route path="/noticias/:id" element={<NoticiaDetalhePage />} />
             <Route
